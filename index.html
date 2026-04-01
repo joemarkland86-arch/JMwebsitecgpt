@@ -1,485 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GAP Profile</title>
-  <style>
-    :root {
-      --navy: #1A1F3D;
-      --teal: #2A9D8F;
-      --amber: #E9A319;
-      --sand: #F5F0E8;
-      --white: #FFFFFF;
-      --text: #1F2430;
-      --muted: #5E6472;
-      --border: rgba(26, 31, 61, 0.12);
-      --shadow: 0 10px 30px rgba(26, 31, 61, 0.08);
-      --radius: 18px;
-      --max: 1120px;
-    }
+export default function HomePage() {
+  return (
+    <main className="bg-stone-50 text-slate-900">
+      <Hero />
+      <Pattern />
+      <Assessment />
+      <Session />
+      <Results />
+    </main>
+  );
+}
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
-      color: var(--text);
-      background: var(--sand);
-      line-height: 1.55;
-    }
+/* HERO */
 
-    h1, h2, h3 {
-      margin: 0 0 16px;
-      color: var(--navy);
-      line-height: 1.1;
-    }
-
-    p { margin: 0 0 16px; }
-    a { text-decoration: none; }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 72px 0;
-    }
-
-    .hero {
-      padding: 88px 0 64px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.88rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--teal);
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .hero-grid,
-    .two-col {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      max-width: 11ch;
-    }
-
-    .lead {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 58ch;
-      margin-bottom: 28px;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 28px 0 18px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: 0.2s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    .btn-primary:hover { opacity: 0.92; }
-
-    .btn-secondary {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--navy);
-    }
-
-    .trust-note {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 14px;
-    }
-
-    .list,
-    .bullets {
-      display: grid;
-      gap: 12px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .list li,
-    .bullets li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--text);
-    }
-
-    .list li::before,
-    .bullets li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--amber);
-      transform: translateY(-50%);
-    }
-
-    .strip {
-      background: rgba(255,255,255,0.55);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .problem h2,
-    .session h2,
-    .results h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      max-width: 12ch;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .mini-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-    }
-
-    .mini-card strong {
-      display: block;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
-    .mechanism {
-      margin-top: 20px;
-      padding: 18px 20px;
-      border-left: 4px solid var(--teal);
-      background: rgba(42, 157, 143, 0.08);
-      border-radius: 10px;
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    .session-box {
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 24px;
-      padding: 36px;
-      box-shadow: var(--shadow);
-    }
-
-    .session-box h2,
-    .session-box h3,
-    .session-box p,
-    .session-box li {
-      color: var(--white);
-    }
-
-    .session-box .btn-primary {
-      background: var(--amber);
-      color: var(--navy);
-    }
-
-    .muted-light {
-      color: rgba(255,255,255,0.8);
-    }
-
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .results-layout {
-      display: grid;
-      grid-template-columns: 1fr 0.95fr;
-      gap: 24px;
-      margin-top: 28px;
-    }
-
-    .archetype-label {
-      display: inline-block;
-      background: rgba(42, 157, 143, 0.12);
-      color: var(--teal);
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 8px 14px;
-      margin-bottom: 14px;
-      font-size: 0.9rem;
-    }
-
-    .next-step-box {
-      background: var(--navy);
-      color: var(--white);
-      padding: 28px;
-      border-radius: 20px;
-    }
-
-    .next-step-box h3,
-    .next-step-box p,
-    .next-step-box li {
-      color: var(--white);
-    }
-
-    .footer-space {
-      height: 40px;
-    }
-
-    @media (max-width: 860px) {
-      .hero-grid,
-      .two-col,
-      .results-layout,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 64px;
-      }
-
-      .section {
-        padding: 56px 0;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">GAP Profile</div>
-        <h1>You already know what you should be doing. So what’s actually stopping you?</h1>
-        <p class="lead">
-          The GAP Profile helps you pinpoint the real reason you are not taking action in your career —
-          and shows you what to do next.
+function Hero() {
+  return (
+    <section className="px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-5xl">
+        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal-600">
+          GAP Profile
         </p>
 
-        <div class="cta-row">
-          <a href="#assessment" class="btn btn-primary">Find your block</a>
-          <a href="#session" class="btn btn-secondary">See the 1:1 session</a>
+        <h1 className="text-4xl font-semibold leading-tight md:text-6xl max-w-[12ch]">
+          You already know what to do. You’re just not doing it.
+        </h1>
+
+        <p className="mt-6 text-xl text-slate-600 max-w-2xl leading-8">
+          This shows you exactly why — and what needs to change so you actually act.
+        </p>
+
+        <div className="mt-8 flex gap-4">
+          <a className="bg-slate-900 text-white px-6 py-3 rounded-full font-semibold">
+            Find your block
+          </a>
         </div>
 
-        <p class="trust-note">
-          Takes around 5 minutes. Not a personality quiz. Not generic career advice.
+        <p className="mt-5 text-sm text-slate-500">
+          Takes 5 minutes. Most people take it. Most people don’t act on it.
         </p>
       </div>
+    </section>
+  );
+}
 
-      <div class="card">
-        <h3>You might recognise this</h3>
-        <ul class="list">
-          <li>You’ve opened roles and thought, “I could probably do that,” then closed the tab.</li>
-          <li>You keep meaning to make a move, but the week goes and nothing happens.</li>
-          <li>You’ve thought about this properly. You still haven’t acted.</li>
-          <li>You’re not short of ideas. You’re short of movement.</li>
-          <li>You’re doing fine on paper, but something is off and you can feel it.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+/* PATTERN (THIS IS WHERE CONVERSION HAPPENS) */
 
-  <!-- PROBLEM -->
-  <section class="section strip problem">
-    <div class="container two-col">
-      <div>
-        <h2>This usually isn’t a lack of effort.</h2>
-        <p>
-          Most people assume they need more clarity, more confidence, or a better plan.
-          But when you already know the move and still are not making it, the problem is different.
-        </p>
-        <p>
-          Something is interfering with action.
-        </p>
-        <div class="mechanism">
-          The GAP Profile identifies the exact block getting in the way — so you can stop
-          thinking about the same move and actually start dealing with it.
-        </div>
-      </div>
+function Pattern() {
+  return (
+    <section className="px-6 py-16 md:px-10 md:py-24 bg-white border-y border-slate-200">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="text-3xl md:text-5xl font-semibold max-w-[14ch] leading-tight">
+          This is the pattern.
+        </h2>
 
-      <div class="card">
-        <h3>What the GAP Profile looks for</h3>
-        <ul class="bullets">
-          <li>Do you trust your own capability enough to move?</li>
-          <li>Does the next step feel more risky than it probably is?</li>
-          <li>Does the move make sense on paper but not feel like you?</li>
-          <li>Do you genuinely lack the time, energy, or headspace to act?</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ASSESSMENT CTA -->
-  <section id="assessment" class="section">
-    <div class="container">
-      <div class="two-col">
-        <div>
-          <div class="eyebrow">Step 1</div>
-          <h2>Find the real block.</h2>
-          <p class="lead">
-            You do not need another generic list of career tips. You need to know what is
-            actually getting in the way of action.
+        <div className="mt-10 space-y-5 text-lg text-slate-700 max-w-2xl">
+          <p>You’ve thought about the move properly.</p>
+          <p>You know what the next step probably is.</p>
+          <p>You’ve had multiple chances to start.</p>
+          <p className="font-semibold text-slate-900">
+            You still haven’t done it.
           </p>
-          <div class="cta-row">
-            <a href="#" class="btn btn-primary">Take the GAP Profile</a>
-          </div>
         </div>
 
-        <div class="grid-3">
-          <div class="mini-card">
-            <strong>Capability Belief</strong>
-            You have the ability, but you do not fully trust it.
-          </div>
-          <div class="mini-card">
-            <strong>Risk Tolerance</strong>
-            The move feels too risky, so hesitation keeps sounding sensible.
-          </div>
-          <div class="mini-card">
-            <strong>Identity Fit</strong>
-            It makes sense on paper, but does not feel like you yet.
-          </div>
+        <div className="mt-10 bg-teal-50 border-l-4 border-teal-600 p-6 rounded-lg">
+          <p className="font-medium text-slate-900">
+            This isn’t a motivation problem. Something is getting in the way of action.
+          </p>
+        </div>
+
+        <div className="mt-8 text-slate-600 max-w-xl">
+          <p>
+            Left alone, this doesn’t fix itself. It just repeats.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  );
+}
 
-  <!-- 1:1 SESSION -->
-  <section id="session" class="section session">
-    <div class="container">
-      <div class="session-box">
-        <div class="two-col">
+/* ASSESSMENT */
+
+function Assessment() {
+  return (
+    <section className="px-6 py-16 md:px-10 md:py-24">
+      <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p className="text-sm uppercase tracking-[0.2em] text-teal-600 font-semibold">
+            Step 1
+          </p>
+
+          <h2 className="text-3xl md:text-5xl font-semibold mt-4 leading-tight">
+            Find what’s actually stopping you.
+          </h2>
+
+          <p className="mt-6 text-lg text-slate-700 max-w-xl">
+            Not more advice. Not more thinking. The actual block.
+          </p>
+
+          <div className="mt-8">
+            <a className="bg-slate-900 text-white px-6 py-3 rounded-full font-semibold">
+              Take the GAP Profile
+            </a>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            "You don’t trust your own capability enough to move",
+            "The move feels riskier than it actually is",
+            "It doesn’t feel like you yet",
+            "You don’t have the capacity to follow through",
+          ].map((item) => (
+            <div
+              key={item}
+              className="bg-white border border-slate-200 p-5 rounded-xl"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* SESSION (HARD SELL, CLEAR OUTCOME) */
+
+function Session() {
+  return (
+    <section className="px-6 py-16 md:px-10 md:py-24">
+      <div className="mx-auto max-w-6xl bg-slate-900 text-white rounded-3xl p-10">
+        <div className="grid md:grid-cols-2 gap-10">
           <div>
-            <div class="eyebrow" style="color:#fff; opacity:0.85;">Step 2</div>
-            <h2>Book a 1:1 GAP Coaching Session</h2>
-            <p class="muted-light">
-              Use your GAP Profile results in a focused 1:1 coaching session to turn insight into action.
+            <p className="text-sm uppercase tracking-[0.2em] text-white/70">
+              Step 2
             </p>
 
-            <div class="price">£97</div>
-            <p class="muted-light">Focused 60-minute 1:1 coaching session</p>
+            <h2 className="text-3xl md:text-5xl font-semibold mt-4 leading-tight">
+              Book a 1:1 GAP Coaching Session
+            </h2>
 
-            <div class="cta-row">
-              <a href="#" class="btn btn-primary">Book your 1:1 session</a>
+            <p className="mt-6 text-lg text-white/80">
+              This is where you stop thinking about it and actually deal with it.
+            </p>
+
+            <p className="mt-8 text-4xl font-bold">£97</p>
+
+            <div className="mt-8">
+              <a className="bg-amber-400 text-slate-900 px-6 py-3 rounded-full font-semibold">
+                Book your session
+              </a>
             </div>
           </div>
 
           <div>
-            <h3>In this session, we will:</h3>
-            <ul class="bullets">
-              <li>pinpoint the exact moment you get stuck</li>
-              <li>work out what is keeping the pattern in place</li>
-              <li>define the next move clearly</li>
-              <li>remove one key blocker so you can act</li>
+            <h3 className="text-xl font-semibold">
+              You will leave with:
+            </h3>
+
+            <ul className="mt-6 space-y-4 text-white/90">
+              <li>• the exact point you’re getting stuck</li>
+              <li>• a clear next move</li>
+              <li>• one blocker removed</li>
             </ul>
 
-            <p class="muted-light" style="margin-top:18px;">
-              This is not a generic chat. It is a focused coaching session built around your results
-              and the move you are not making.
+            <p className="mt-8 text-white/70">
+              Most people don’t need more time. They need to deal with what’s in the way.
             </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  );
+}
 
-  <!-- SAMPLE RESULTS PAGE -->
-  <section class="section strip results">
-    <div class="container">
-      <div class="eyebrow">Example results page</div>
-      <h2>Your results should create tension, not fully resolve it.</h2>
-      <p class="lead">
-        The result should explain enough to feel accurate, but not so much that people feel finished.
-      </p>
+/* RESULTS PAGE (HIGH PRESSURE VERSION) */
 
-      <div class="results-layout">
-        <div class="card">
-          <div class="archetype-label">Primary pattern: The Safety Seeker</div>
-          <h3>Your next move makes sense. It just does not feel safe enough yet.</h3>
-          <p>
-            This is not about laziness or lack of ambition. Your brain is treating this
-            career move like a threat, which makes delay feel sensible and more research feel productive.
-          </p>
-          <p>
-            You may recognise the pattern:
-          </p>
-          <ul class="bullets">
-            <li>You keep thinking about the move without starting it.</li>
-            <li>You look for more certainty before acting.</li>
-            <li>You talk yourself out of things by imagining what could go wrong.</li>
-          </ul>
-        </div>
+function Results() {
+  return (
+    <section className="px-6 py-16 md:px-10 md:py-24 bg-white border-y border-slate-200">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-3xl md:text-5xl font-semibold max-w-[14ch] leading-tight">
+          This is where most people stop.
+        </h2>
 
-        <div class="next-step-box">
-          <h3>Do not leave it here.</h3>
-          <p>
-            Most people feel the relief of being accurately described, then carry on doing what
-            they have been doing.
-          </p>
-          <p>
-            The useful part is what happens next.
-          </p>
+        <div className="mt-10 grid md:grid-cols-2 gap-8">
+          <div className="bg-white border border-slate-200 p-6 rounded-xl">
+            <h3 className="font-semibold text-xl">
+              Your result will feel accurate.
+            </h3>
 
-          <h3 style="margin-top:22px;">Book a 1:1 GAP Coaching Session</h3>
-          <p>
-            We will use this result to work out exactly where you are getting stuck and decide
-            what to do next.
-          </p>
-          <ul class="bullets">
-            <li>clarify the real sticking point</li>
-            <li>reduce one key blocker</li>
-            <li>leave with a next move you can actually take</li>
-          </ul>
+            <p className="mt-4 text-slate-700">
+              You’ll recognise the pattern. It will make sense.
+            </p>
 
-          <div class="cta-row" style="margin-top:22px;">
-            <a href="#" class="btn btn-primary">Book your 1:1 session</a>
+            <p className="mt-4 text-slate-700">
+              That’s usually where people leave it.
+            </p>
+          </div>
+
+          <div className="bg-slate-900 text-white p-6 rounded-xl">
+            <h3 className="text-xl font-semibold">
+              Don’t leave it there.
+            </h3>
+
+            <p className="mt-4 text-white/80">
+              Nothing changes if nothing changes.
+            </p>
+
+            <p className="mt-4 text-white/80">
+              The useful part is what you do with it.
+            </p>
+
+            <div className="mt-6">
+              <a className="bg-amber-400 text-slate-900 px-6 py-3 rounded-full font-semibold">
+                Book your 1:1 session
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <div class="footer-space"></div>
-</body>
-</html>
+    </section>
+  );
+}
