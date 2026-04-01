@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joe Markland — Career Coaching</title>
-  <meta name="description" content="Career coaching for people who already know what they should be doing, but still are not doing it. Free GAP Profile — find out what is actually getting in the way." />
+  <meta name="description" content="Career coaching for people who already know what they should be doing, but still are not doing it. Take the free GAP Profile to find out what is actually getting in the way." />
   <meta property="og:title" content="Joe Markland — Career Coaching" />
-  <meta property="og:description" content="If you already know what you should be doing… what is actually stopping you? Free GAP Profile — 4 minutes, no sign-up." />
+  <meta property="og:description" content="Career coaching for people who already know what they should be doing, but still are not doing it. Free GAP Profile — 4 minutes, no sign-up." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,6 +35,20 @@
     .btn-amber:hover { background: #d08a10; transform: translateY(-1px); }
     .btn-amber:active { transform: translateY(0); }
 
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #2c2a25;
+      border: 1px solid #ebe4d8;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color .2s ease, transform .15s ease, color .2s ease;
+    }
+    .btn-outline:hover { border-color: #2a9d8f; color: #2a9d8f; transform: translateY(-1px); }
+    .btn-outline:active { transform: translateY(0); }
+
     .qb {
       width: 100%;
       padding: 18px 0;
@@ -56,7 +70,7 @@
 
     .faq-body { overflow: hidden; transition: max-height .35s ease, opacity .25s ease; }
     .faq-body.closed { max-height: 0; opacity: 0; }
-    .faq-body.open { max-height: 600px; opacity: 1; }
+    .faq-body.open { max-height: 500px; opacity: 1; }
 
     .faq-icon {
       color: #2a9d8f;
@@ -76,12 +90,13 @@
     .footer-link:hover { color: #2a9d8f; }
 
     @media (prefers-reduced-motion: reduce) {
-      .btn-amber, .faq-body, .faq-icon { transition: none; }
+      .btn-amber, .btn-outline, .faq-body, .faq-icon { transition: none; }
     }
   </style>
 </head>
 <body>
   <div id="root"></div>
+
   <script>
   (function() {
     'use strict';
@@ -91,10 +106,17 @@
     var useRef = React.useRef;
 
     var C = {
-      sand:'#f5f0e8', sandDk:'#ebe4d8', sandLt:'#faf7f2',
-      ink:'#2c2a25', mid:'#5c5850', light:'#6e6960',
-      teal:'#2a9d8f', amber:'#e9a319', amberHover:'#d08a10',
-      white:'#fff', navy:'#1a1f3d', cream:'#fefbf4'
+      sand:'#f5f0e8',
+      sandDk:'#ebe4d8',
+      sandLt:'#faf7f2',
+      ink:'#2c2a25',
+      mid:'#5c5850',
+      light:'#6e6960',
+      teal:'#2a9d8f',
+      amber:'#e9a319',
+      navy:'#1a1f3d',
+      white:'#fff',
+      cream:'#fefbf4'
     };
 
     var F = {
@@ -103,55 +125,54 @@
     };
 
     var GAP = 'https://gapprofile.co.uk';
-    var PARENTS = '#/parents';
-    var w = { maxWidth:620, margin:'0 auto', padding:'0 24px' };
+    var w = { maxWidth: 620, margin: '0 auto', padding: '0 24px' };
 
     var h2s = {
-      fontFamily:F.serif,
-      fontSize:'1.55rem',
-      lineHeight:1.25,
-      color:C.ink,
-      marginBottom:18,
-      fontWeight:400
+      fontFamily: F.serif,
+      fontSize: '1.55rem',
+      lineHeight: 1.25,
+      color: C.ink,
+      marginBottom: 18,
+      fontWeight: 400
     };
 
     var ps = {
-      color:C.mid,
-      marginBottom:18,
-      fontSize:'1.02rem',
-      lineHeight:1.72
+      color: C.mid,
+      marginBottom: 18,
+      fontSize: '1.02rem',
+      lineHeight: 1.72
     };
 
-    var pInk = Object.assign({}, ps, { color:C.ink });
-    var strong = { color:C.ink, fontWeight:500 };
+    var pInk = Object.assign({}, ps, { color: C.ink });
+    var strong = { color: C.ink, fontWeight: 500 };
 
     var FAQ_DATA = [
       {
-        q:'I already know what I should be doing. Why would this help?',
-        a:'Because knowing what to do is not the same as doing it. The GAP Profile helps you work out what is actually getting in the way, so you can stop circling it and start moving.'
+        q: 'I already know what I should be doing. Why would this help?',
+        a: 'Because knowing what to do is not the same as doing it. This helps you work out what is actually getting in the way, so you can stop circling it and start moving.'
       },
       {
-        q:'What happens in a session?',
-        a:'We focus on the move you keep not making, work out what is blocking it, and narrow things down to a clear next step. If you have taken the GAP Profile first, we use that as the starting point.'
+        q: 'What happens in a session?',
+        a: 'We focus on the move you keep not making, work out what is blocking it, and narrow things down to a clear next step. If you have taken the GAP Profile first, we use that as the starting point.'
       },
       {
-        q:'Do you tell me what to do?',
-        a:'No. The actions need to come from you. My job is to help you see the problem clearly, challenge what needs challenging, and help you get to something honest and doable.'
+        q: 'Do you tell me what to do?',
+        a: 'No. The actions need to come from you. My job is to help you see the problem clearly, challenge what needs challenging, and help you get to something honest and doable.'
       },
       {
-        q:'Should I start with the GAP Profile or book a session?',
-        a:'For most people, the GAP Profile is the best place to start. It gives a clearer picture of what may be getting in the way before we speak.'
+        q: 'Should I start with the GAP Profile or book a session?',
+        a: 'For most people, the GAP Profile is the best place to start. It gives a clearer picture of what may be getting in the way before we speak.'
       },
       {
-        q:'Looking at this for your son or daughter?',
-        a:'There is a separate page with more information for parents and supporters.'
+        q: 'Looking at this for your son or daughter?',
+        a: 'There is a separate page with more information for parents and supporters.'
       }
     ];
 
     function FadeIn(props) {
       var ref = useRef(null);
-      var visState = useState(false);
-      var vis = visState[0], setVis = visState[1];
+      var state = useState(false);
+      var vis = state[0], setVis = state[1];
       var delay = props.delay || 0;
 
       useEffect(function() {
@@ -168,7 +189,7 @@
       }, []);
 
       return e('div', {
-        ref:ref,
+        ref: ref,
         style: Object.assign({
           opacity: vis ? 1 : 0,
           transform: vis ? 'translateY(0)' : 'translateY(16px)',
@@ -179,100 +200,116 @@
 
     function Divider() {
       return e('div', {
-        style: Object.assign({}, w, { borderTop:'1px solid ' + C.sandDk })
+        style: Object.assign({}, w, {
+          borderTop: '1px solid ' + C.sandDk
+        })
       });
     }
 
     function Nav(props) {
       return e('nav', {
-          style:{
-            padding:'18px 24px',
-            display:'flex',
-            justifyContent:'space-between',
-            alignItems:'center',
-            maxWidth:960,
-            margin:'0 auto'
+        style: {
+          padding: '18px 24px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          maxWidth: 960,
+          margin: '0 auto'
+        }
+      },
+        e('a', {
+          href: '#/',
+          onClick: function(ev) {
+            ev.preventDefault();
+            props.setPage('home');
+            window.scrollTo(0, 0);
+          },
+          style: {
+            fontFamily: F.serif,
+            fontSize: '1.15rem',
+            color: C.ink,
+            textDecoration: 'none'
           }
         },
-        e('a', {
-            href:'#/',
-            onClick:function(ev){ ev.preventDefault(); props.setPage('home'); window.scrollTo(0,0); },
-            style:{
-              fontFamily:F.serif,
-              fontSize:'1.15rem',
-              color:C.ink,
-              textDecoration:'none'
-            }
-          },
           'Joe Markland',
-          e('span', { style:{ color:C.teal }}, '.')
+          e('span', { style: { color: C.teal } }, '.')
         ),
-        e('div', { style:{ display:'flex', gap:20, alignItems:'center' }},
+        e('div', { style: { display: 'flex', gap: 20, alignItems: 'center' } },
           e('a', {
-              href:'#/about',
-              onClick:function(ev){ ev.preventDefault(); props.setPage('about'); window.scrollTo(0,0); },
-              style:{
-                fontFamily:F.sans,
-                fontSize:'.82rem',
-                fontWeight:500,
-                color: props.page === 'about' ? C.ink : C.light,
-                textDecoration:'none'
-              }
-            }, 'About'
-          ),
+            href: '#/about',
+            onClick: function(ev) {
+              ev.preventDefault();
+              props.setPage('about');
+              window.scrollTo(0, 0);
+            },
+            style: {
+              fontFamily: F.sans,
+              fontSize: '.82rem',
+              fontWeight: 500,
+              color: props.page === 'about' ? C.ink : C.light,
+              textDecoration: 'none'
+            }
+          }, 'About'),
           e('a', {
-              href:GAP,
-              className:'btn-amber',
-              style:{ padding:'8px 18px', fontSize:'.82rem', borderRadius:5 }
-            }, 'Take the GAP Profile'
-          )
+            href: GAP,
+            className: 'btn-amber',
+            style: { padding: '8px 18px', fontSize: '.82rem', borderRadius: 5 }
+          }, 'Take the GAP Profile')
         )
       );
     }
 
-    function Footer() {
-      return e('footer', { style:{ background:C.navy, padding:'36px 24px 28px' }},
+    function Footer(props) {
+      return e('footer', { style: { background: C.navy, padding: '36px 24px 28px' } },
         e('div', {
-            style:{
-              maxWidth:620,
-              margin:'0 auto',
-              display:'flex',
-              justifyContent:'space-between',
-              alignItems:'flex-start',
-              flexWrap:'wrap',
-              gap:16
-            }
-          },
+          style: {
+            maxWidth: 620,
+            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            gap: 16
+          }
+        },
           e('div', null,
             e('p', {
-              style:{
-                fontFamily:F.serif,
-                fontSize:'1rem',
-                color:'rgba(245,240,232,0.9)',
-                marginBottom:4
+              style: {
+                fontFamily: F.serif,
+                fontSize: '1rem',
+                color: 'rgba(245,240,232,0.9)',
+                marginBottom: 4
               }
             }, 'Joe Markland'),
             e('p', {
-              style:{
-                fontFamily:F.sans,
-                fontSize:'.78rem',
-                color:'rgba(245,240,232,.45)',
-                lineHeight:1.5
+              style: {
+                fontFamily: F.sans,
+                fontSize: '.78rem',
+                color: 'rgba(245,240,232,.45)',
+                lineHeight: 1.5
               }
-            }, 'For people who know the move but still are not making it.')
+            }, 'Career coaching for people who know the move but still are not making it.')
           ),
-          e('div', { style:{ display:'flex', gap:14, flexWrap:'wrap' }},
-            e('a', { href:'#/parents', onClick:function(ev){ ev.preventDefault(); window.location.hash = '/parents'; }, className:'footer-link' }, 'Parents'),
-            e('a', { href:'https://www.linkedin.com/in/joe-markland-coaching', className:'footer-link' }, 'LinkedIn'),
-            e('a', { href:'mailto:hello@joemarkland.co.uk', className:'footer-link' }, 'Contact')
+          e('div', { style: { display: 'flex', gap: 14, flexWrap: 'wrap' } },
+            e('a', {
+              href: '#/parents',
+              onClick: function(ev) {
+                ev.preventDefault();
+                props.setPage('parents');
+                window.scrollTo(0, 0);
+              },
+              className: 'footer-link'
+            }, 'Parents'),
+            e('a', { href: 'https://www.linkedin.com/in/joe-markland-coaching', className: 'footer-link' }, 'LinkedIn'),
+            e('a', { href: 'mailto:hello@joemarkland.co.uk', className: 'footer-link' }, 'Contact')
           )
         ),
-        e('div', { style:{ maxWidth:620, margin:'12px auto 0' }},
+        e('div', { style: { maxWidth: 620, margin: '12px auto 0' } },
           e('p', {
-            style:{
-              color:'rgba(245,240,232,.15)',
-              fontSize:'.66rem',
-              fontFamily:F.sans
+            style: {
+              color: 'rgba(245,240,232,.15)',
+              fontSize: '.66rem',
+              fontFamily: F.sans
             }
           }, '© 2026 Joe Markland Career Coaching. GAP Profile™ is a trademark.')
         )
@@ -285,289 +322,298 @@
 
       return e('main', null,
 
-        // HERO
-        e('section', { style: Object.assign({}, w, { paddingTop:72, paddingBottom:56 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 72, paddingBottom: 54 }) },
           e(FadeIn, null,
             e('h1', {
-                style:{
-                  fontSize:'clamp(1.85rem, 4vw, 2.55rem)',
-                  lineHeight:1.18,
-                  color:C.ink,
-                  marginBottom:24,
-                  fontFamily:F.serif,
-                  fontWeight:400
-                }
-              },
+              style: {
+                fontSize: 'clamp(1.9rem, 4vw, 2.65rem)',
+                lineHeight: 1.16,
+                color: C.ink,
+                marginBottom: 18,
+                fontFamily: F.serif,
+                fontWeight: 400
+              }
+            },
               'If you already know what you should be doing…',
               e('br'),
-              e('span', { style:{ color:C.teal, fontStyle:'italic' }}, 'what is actually stopping you?')
+              e('span', { style: { color: C.teal, fontStyle: 'italic' } }, 'what is actually stopping you?')
             )
           ),
-          e(FadeIn, { delay:0.05 },
+          e(FadeIn, { delay: 0.04 },
+            e('p', {
+              style: {
+                color: C.ink,
+                fontSize: '.96rem',
+                lineHeight: 1.65,
+                maxWidth: 520,
+                marginBottom: 22,
+                fontWeight: 500
+              }
+            }, 'Career coaching for people who already know what they should be doing, but still are not doing it.')
+          ),
+          e(FadeIn, { delay: 0.08 },
             e('a', {
-              href:GAP,
-              className:'btn-amber',
-              style:{ padding:'14px 28px', fontSize:'.95rem' }
+              href: GAP,
+              className: 'btn-amber',
+              style: { padding: '14px 28px', fontSize: '.95rem' }
             }, 'Take the free GAP Profile'),
             e('p', {
-              style:{
-                color:C.light,
-                fontSize:'.82rem',
-                marginTop:12,
-                marginBottom:0
+              style: {
+                color: C.light,
+                fontSize: '.82rem',
+                marginTop: 12,
+                marginBottom: 0
               }
             }, 'Free. No sign-up. Takes about four minutes.')
           )
         ),
 
-        // RECOGNITION / REFRAME
-        e('section', { style: Object.assign({}, w, { paddingTop:28, paddingBottom:52 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 14, paddingBottom: 50 }) },
           e(FadeIn, null,
-            e('h2', { style:h2s }, 'Why this happens')
+            e('h2', { style: h2s }, 'Why this happens')
           ),
-          e(FadeIn, { delay:0.04 },
-            e('p', { style:pInk }, 'You probably already know the move. You just have not made it.')
+          e(FadeIn, { delay: 0.04 },
+            e('p', { style: pInk }, 'You probably already know the move. You just have not made it.')
           ),
-          e(FadeIn, { delay:0.06 },
-            e('p', { style:ps }, 'Maybe you have thought about it repeatedly. Maybe you have told yourself you will start properly next week. Maybe you have opened the CV, the application, or the message and closed it again.')
+          e(FadeIn, { delay: 0.06 },
+            e('p', { style: ps }, 'Maybe you have thought about it repeatedly. Maybe you have told yourself you will start properly next week. Maybe you have opened the CV, the application, or the message and closed it again.')
           ),
-          e(FadeIn, { delay:0.08 },
-            e('p', { style:ps }, 'That usually is not laziness. And it usually is not a lack of information.')
-          ),
-          e(FadeIn, { delay:0.1 },
-            e('p', { style:pInk }, 'It means something underneath is getting in the way.')
+          e(FadeIn, { delay: 0.08 },
+            e('p', { style: pInk }, 'That usually is not laziness. And it usually is not a lack of information. It means something underneath is getting in the way.')
           )
         ),
 
         e(Divider),
 
-        // GAP PROFILE
-        e('section', { style: Object.assign({}, w, { paddingTop:48, paddingBottom:52 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 48, paddingBottom: 52 }) },
           e(FadeIn, null,
-            e('h2', { style:h2s }, 'That is what the GAP Profile is for')
+            e('h2', { style: h2s }, 'Start with the GAP Profile')
           ),
-          e(FadeIn, { delay:0.05 },
-            e('p', { style:ps }, 'A short assessment that helps you pinpoint what may be getting in the way of action.')
+          e(FadeIn, { delay: 0.05 },
+            e('p', { style: ps }, 'The GAP Profile is a short assessment I use within my career coaching work. It helps you pinpoint what may be getting in the way of action.')
           ),
-          e(FadeIn, { delay:0.07 },
-            e('p', { style:pInk }, 'Not a personality quiz. Not generic career advice. Just a clearer read on why this still feels stuck.')
+          e(FadeIn, { delay: 0.08 },
+            e('p', { style: pInk }, 'Not a personality quiz. Not generic career advice. Just a clearer read on why this still feels stuck.')
           ),
-          e(FadeIn, { delay:0.1 },
+          e(FadeIn, { delay: 0.12 },
             e('div', {
-                style:{
-                  background:C.navy,
-                  borderRadius:10,
-                  padding:'28px 24px',
-                  marginTop:10,
-                  marginBottom:24,
-                  color:'#f5f0e8'
-                }
-              },
+              style: {
+                background: C.navy,
+                borderRadius: 10,
+                padding: '28px 24px',
+                marginTop: 10,
+                marginBottom: 24,
+                color: '#f5f0e8'
+              }
+            },
               e('p', {
-                style:{
-                  fontSize:'.68rem',
-                  letterSpacing:'.08em',
-                  textTransform:'uppercase',
-                  color:'rgba(245,240,232,.4)',
-                  fontWeight:600,
-                  marginBottom:16
+                style: {
+                  fontSize: '.68rem',
+                  letterSpacing: '.08em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(245,240,232,.4)',
+                  fontWeight: 600,
+                  marginBottom: 16
                 }
               }, 'Example result'),
               e('p', {
-                style:{
-                  fontFamily:F.serif,
-                  fontSize:'clamp(1.4rem, 3.5vw, 1.75rem)',
-                  color:C.teal,
-                  lineHeight:1.25,
-                  marginBottom:10,
-                  fontWeight:400
+                style: {
+                  fontFamily: F.serif,
+                  fontSize: 'clamp(1.4rem, 3.5vw, 1.75rem)',
+                  color: C.teal,
+                  lineHeight: 1.25,
+                  marginBottom: 10,
+                  fontWeight: 400
                 }
               }, 'The Capable Doubter'),
               e('p', {
-                style:{
-                  fontSize:'.92rem',
-                  color:'rgba(245,240,232,.7)',
-                  lineHeight:1.6,
-                  marginBottom:0,
-                  fontStyle:'italic'
+                style: {
+                  fontSize: '.92rem',
+                  color: 'rgba(245,240,232,.7)',
+                  lineHeight: 1.6,
+                  marginBottom: 0,
+                  fontStyle: 'italic'
                 }
               }, 'You can do this. You just do not trust your own evidence.'),
               e('p', {
-                style:{
-                  fontSize:'.72rem',
-                  color:'rgba(245,240,232,.25)',
-                  marginTop:14,
-                  marginBottom:0
+                style: {
+                  fontSize: '.72rem',
+                  color: 'rgba(245,240,232,.25)',
+                  marginTop: 14,
+                  marginBottom: 0
                 }
               }, 'One of four patterns — yours will be different')
             )
           ),
-          e(FadeIn, { delay:0.12 },
-            e('a', {
-              href:GAP,
-              className:'btn-amber',
-              style:{ padding:'12px 24px', fontSize:'.9rem' }
-            }, 'Take the free GAP Profile')
+          e(FadeIn, { delay: 0.14 },
+            e('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 12 } },
+              e('a', {
+                href: GAP,
+                className: 'btn-amber',
+                style: { padding: '12px 24px', fontSize: '.9rem' }
+              }, 'Take the free GAP Profile'),
+              e('a', {
+                href: '#/about',
+                onClick: function(ev) {
+                  ev.preventDefault();
+                  props.setPage('about');
+                  window.scrollTo(0, 0);
+                },
+                className: 'btn-outline',
+                style: { padding: '12px 22px', fontSize: '.9rem' }
+              }, 'About the coaching')
+            )
           )
         ),
 
         e(Divider),
 
-        // HOW I WORK
-        e('section', { style: Object.assign({}, w, { paddingTop:48, paddingBottom:52 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 48, paddingBottom: 52 }) },
           e(FadeIn, null,
-            e('h2', { style:h2s }, 'How I work')
+            e('h2', { style: h2s }, 'How the coaching works')
           ),
-          e(FadeIn, { delay:0.04 },
-            e('p', { style: Object.assign({}, ps, strong) }, 'I am Joe. I work with people who already have a fair idea what the next step is, but still are not making it happen.')
+          e(FadeIn, { delay: 0.04 },
+            e('p', { style: Object.assign({}, ps, strong) }, 'I am Joe, a career coach for people who know the move but still are not making it happen.')
           ),
-          e(FadeIn, { delay:0.07 },
-            e('p', { style:ps }, 'We do not need to spend three sessions generating more options if the real issue is elsewhere. The work is figuring out what is actually getting in the way, then finding a way forward you are more likely to follow through on.')
+          e(FadeIn, { delay: 0.07 },
+            e('p', { style: ps }, 'We do not need to spend three sessions generating more options if the real issue is elsewhere. The work is figuring out what is actually getting in the way, then finding a way forward you are more likely to follow through on.')
           ),
-          e(FadeIn, { delay:0.1 },
+          e(FadeIn, { delay: 0.1 },
             e('div', {
-                style:{
-                  borderLeft:'3px solid ' + C.teal,
-                  paddingLeft:24,
-                  marginBottom:24
-                }
-              },
+              style: {
+                borderLeft: '3px solid ' + C.teal,
+                paddingLeft: 24,
+                marginBottom: 24
+              }
+            },
               e('p', {
-                style:{
-                  fontFamily:F.serif,
-                  fontStyle:'italic',
-                  fontSize:'clamp(1.1rem, 2.8vw, 1.3rem)',
-                  lineHeight:1.5,
-                  color:C.ink,
-                  margin:0
+                style: {
+                  fontFamily: F.serif,
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(1.1rem, 2.8vw, 1.3rem)',
+                  lineHeight: 1.5,
+                  color: C.ink,
+                  margin: 0
                 }
               }, 'I will not tell you to believe in yourself. I will help you work out what is actually in the way.')
             )
           ),
-          e(FadeIn, { delay:0.12 },
-            e('p', { style:pInk }, 'My aim is for you to not need me. If we are still having regular sessions six months from now, I have probably not done my job properly.')
-          ),
-          e(FadeIn, { delay:0.14 },
-            e('a', {
-                href:'#/about',
-                onClick:function(ev){ ev.preventDefault(); props.setPage('about'); window.scrollTo(0,0); },
-                style:{
-                  color:C.teal,
-                  fontSize:'.92rem',
-                  fontWeight:500,
-                  textDecoration:'none'
-                }
-              }, 'More about me →'
-            )
+          e(FadeIn, { delay: 0.12 },
+            e('p', { style: pInk }, 'My aim is for you to not need me. If we are still having regular sessions six months from now, I have probably not done my job properly.')
           )
         ),
 
         e(Divider),
 
-        // FAQ
-        e('section', { id:'faq', style: Object.assign({}, w, { paddingTop:48, paddingBottom:48 }) },
+        e('section', { id: 'faq', style: Object.assign({}, w, { paddingTop: 48, paddingBottom: 48 }) },
           e(FadeIn, null,
-            e('h2', { style:h2s }, 'Questions')
+            e('h2', { style: h2s }, 'Questions')
           ),
           FAQ_DATA.map(function(f, i) {
             var isOpen = faqOpen === i;
-            return e('div', { key:i },
+            return e('div', { key: i },
               e('button', {
-                  className:'qb',
-                  onClick:function(){ setFaqOpen(isOpen ? null : i); },
-                  'aria-expanded':isOpen,
-                  'aria-controls':'faq-' + i
-                },
+                className: 'qb',
+                onClick: function() { setFaqOpen(isOpen ? null : i); },
+                'aria-expanded': isOpen,
+                'aria-controls': 'faq-' + i
+              },
                 e('span', null, f.q),
                 e('span', {
-                    className:'faq-icon',
-                    'aria-hidden':'true',
-                    style:{ transform: isOpen ? 'rotate(45deg)' : 'none' }
-                  }, '+'
-                )
+                  className: 'faq-icon',
+                  'aria-hidden': 'true',
+                  style: { transform: isOpen ? 'rotate(45deg)' : 'none' }
+                }, '+')
               ),
               e('div', {
-                  id:'faq-' + i,
-                  role:'region',
-                  className:'faq-body ' + (isOpen ? 'open' : 'closed')
-                },
+                id: 'faq-' + i,
+                role: 'region',
+                className: 'faq-body ' + (isOpen ? 'open' : 'closed')
+              },
                 i === 4
                   ? e('p', {
-                      style:{
-                        color:C.mid,
-                        fontSize:'.9rem',
-                        lineHeight:1.75,
-                        paddingBottom:16
+                      style: {
+                        color: C.mid,
+                        fontSize: '.9rem',
+                        lineHeight: 1.75,
+                        paddingBottom: 16
                       }
                     },
                     'There is a separate page with more information for parents and supporters. ',
                     e('a', {
-                      href:'#/parents',
-                      onClick:function(ev){ ev.preventDefault(); props.setPage('parents'); window.scrollTo(0,0); }
+                      href: '#/parents',
+                      onClick: function(ev) {
+                        ev.preventDefault();
+                        props.setPage('parents');
+                        window.scrollTo(0, 0);
+                      }
                     }, 'Read more →')
                   )
                   : e('p', {
-                      style:{
-                        color:C.mid,
-                        fontSize:'.9rem',
-                        lineHeight:1.75,
-                        paddingBottom:16
+                      style: {
+                        color: C.mid,
+                        fontSize: '.9rem',
+                        lineHeight: 1.75,
+                        paddingBottom: 16
                       }
                     }, f.a)
               )
             );
           }),
-          e('div', { style:{ borderTop:'1px solid ' + C.sandDk }})
+          e('div', { style: { borderTop: '1px solid ' + C.sandDk } })
         ),
 
         e(Divider),
 
-        // FINAL CTA
         e('section', {
-          id:'start',
+          id: 'start',
           style: Object.assign({}, w, {
-            paddingTop:52,
-            paddingBottom:80,
-            textAlign:'center'
+            paddingTop: 52,
+            paddingBottom: 80,
+            textAlign: 'center'
           })
         },
           e(FadeIn, null,
             e('h2', {
-                style: Object.assign({}, h2s, {
-                  fontSize:'1.7rem',
-                  marginBottom:12
-                })
-              },
-              'You already know the move.',
+              style: Object.assign({}, h2s, {
+                fontSize: '1.7rem',
+                marginBottom: 12
+              })
+            },
+              'Career coaching, starting with the GAP Profile.',
               e('br'),
-              e('span', { style:{ fontWeight:400 }}, 'Now find out what is getting in the way.')
+              e('span', { style: { fontWeight: 400 } }, 'Four minutes to get a clearer read on what is in the way.')
             )
           ),
-          e(FadeIn, { delay:0.05 },
+          e(FadeIn, { delay: 0.05 },
             e('p', {
-              style:{
-                color:C.mid,
-                fontSize:'.98rem',
-                maxWidth:420,
-                margin:'0 auto 26px'
+              style: {
+                color: C.mid,
+                fontSize: '.98rem',
+                maxWidth: 440,
+                margin: '0 auto 26px'
               }
-            }, 'Take the free GAP Profile and get a clearer read on why this still has not shifted.')
+            }, 'Take the free GAP Profile. If the results feel accurate, you can stop there or book a session and work through it properly.')
           ),
-          e(FadeIn, { delay:0.1 },
+          e(FadeIn, { delay: 0.1 },
             e('a', {
-              href:GAP,
-              className:'btn-amber',
-              style:{ padding:'14px 30px', fontSize:'.98rem' }
+              href: GAP,
+              className: 'btn-amber',
+              style: { padding: '14px 30px', fontSize: '.98rem' }
             }, 'Take the free GAP Profile')
           ),
-          e(FadeIn, { delay:0.12 },
-            e('p', { style:{ color:C.light, fontSize:'.8rem', marginTop:18 } },
+          e(FadeIn, { delay: 0.12 },
+            e('p', { style: { color: C.light, fontSize: '.8rem', marginTop: 18 } },
               'Looking at this for your son or daughter? ',
               e('a', {
-                  href:'#/parents',
-                  onClick:function(ev){ ev.preventDefault(); props.setPage('parents'); window.scrollTo(0,0); },
-                  style:{ color:C.light, textDecoration:'underline' }
-                }, 'For parents and supporters')
+                href: '#/parents',
+                onClick: function(ev) {
+                  ev.preventDefault();
+                  props.setPage('parents');
+                  window.scrollTo(0, 0);
+                },
+                style: { color: C.light, textDecoration: 'underline' }
+              }, 'For parents and supporters')
             )
           )
         )
@@ -576,112 +622,112 @@
 
     function AboutPage() {
       return e('main', null,
-        e('section', { style: Object.assign({}, w, { paddingTop:52, paddingBottom:44 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 52, paddingBottom: 44 }) },
           e(FadeIn, null,
             e('h1', {
-              style:{
-                fontFamily:F.serif,
-                fontSize:'clamp(2.2rem, 5.5vw, 3rem)',
-                fontWeight:400,
-                color:C.ink,
-                lineHeight:1.1,
-                letterSpacing:'-0.02em',
-                marginBottom:16
+              style: {
+                fontFamily: F.serif,
+                fontSize: 'clamp(2.2rem, 5.5vw, 3rem)',
+                fontWeight: 400,
+                color: C.ink,
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em',
+                marginBottom: 16
               }
             }, 'About me')
           ),
-          e(FadeIn, { delay:0.1 },
+          e(FadeIn, { delay: 0.1 },
             e('p', {
-              style:{
-                fontFamily:F.sans,
-                fontSize:'clamp(1rem, 2.4vw, 1.15rem)',
-                lineHeight:1.55,
-                color:C.light,
-                maxWidth:480,
-                fontWeight:400
+              style: {
+                fontFamily: F.sans,
+                fontSize: 'clamp(1rem, 2.4vw, 1.15rem)',
+                lineHeight: 1.55,
+                color: C.light,
+                maxWidth: 520,
+                fontWeight: 400
               }
-            }, 'Career coaching for people who know what they should be doing, but still are not doing it.')
+            }, 'I am a career coach for people who already know what they should be doing, but still are not doing it.')
           )
         ),
 
-        e('div', { style:w },
-          e('div', { style:{ height:1, background:'linear-gradient(to right, ' + C.ink + '15, ' + C.ink + '08)' }})
+        e('div', { style: w },
+          e('div', { style: { height: 1, background: 'linear-gradient(to right, ' + C.ink + '15, ' + C.ink + '08)' } })
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:44, paddingBottom:12 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 44, paddingBottom: 12 }) },
           e(FadeIn, null,
-            e('p', { style:pInk }, 'I have had the same conversation hundreds of times now. Someone sits down, capable, switched on, and says some version of: “I know what I should be doing. I just cannot seem to do it.”')
+            e('p', { style: pInk }, 'I have had the same conversation hundreds of times now. Someone sits down, capable, switched on, and says some version of: “I know what I should be doing. I just cannot seem to do it.”')
           ),
-          e(FadeIn, { delay:0.05 },
-            e('p', { style:ps }, 'And they have usually had advice. Sometimes quite good advice. The problem is, more advice is not what they need. Something more specific is getting in the way — doubt, risk, identity, or plain lack of capacity — and until they can see what it actually is, nothing shifts.')
+          e(FadeIn, { delay: 0.05 },
+            e('p', { style: ps }, 'And they have usually had advice. Sometimes quite good advice. The problem is, more advice is not what they need. Something more specific is getting in the way — doubt, risk, identity, or plain lack of capacity — and until they can see what it actually is, nothing shifts.')
           ),
-          e(FadeIn, { delay:0.1 },
-            e('p', { style:ps }, 'I kept seeing the same four patterns come up. After a while, I built the GAP Profile to help people see them clearly. Not a personality quiz. Not a strengths finder. The GAP Profile shows you, in about four minutes, why you are stuck when you already know the direction.')
+          e(FadeIn, { delay: 0.1 },
+            e('p', { style: ps }, 'I built the GAP Profile to help people see those patterns more clearly. It is not a personality quiz. It is a structured starting point within my career coaching work.')
           )
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:12, paddingBottom:40 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 12, paddingBottom: 40 }) },
           e(FadeIn, null,
-            e('div', { style:{ borderLeft:'3px solid ' + C.teal, paddingLeft:24 }},
+            e('div', { style: { borderLeft: '3px solid ' + C.teal, paddingLeft: 24 } },
               e('p', {
-                style:{
-                  fontFamily:F.serif,
-                  fontStyle:'italic',
-                  fontSize:'clamp(1.2rem, 3vw, 1.45rem)',
-                  lineHeight:1.5,
-                  color:C.ink,
-                  margin:0
+                style: {
+                  fontFamily: F.serif,
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.45rem)',
+                  lineHeight: 1.5,
+                  color: C.ink,
+                  margin: 0
                 }
               }, 'I will not tell you to believe in yourself. I will help you work out what is actually in the way.')
             )
           )
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:0, paddingBottom:12 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 0, paddingBottom: 12 }) },
           e(FadeIn, null,
-            e('p', { style:ps }, 'The coaching is focused. You are not going round the houses for weeks. Once you can see what is actually going on, it usually becomes a lot clearer what needs to shift.')
+            e('p', { style: ps }, 'The coaching is focused. You are not going round the houses for weeks. Once you can see what is actually going on, it usually becomes a lot clearer what needs to shift.')
           ),
-          e(FadeIn, { delay:0.05 },
-            e('p', { style:ps }, 'I hold a Personal Performance Coaching Diploma with distinction from The Coaching Academy. I am a Level 6 Career Development Professional and DISC Practitioner. I also work full-time in university careers and coaching — so I am not just drawing on private practice. I see these patterns with real people, every week.')
+          e(FadeIn, { delay: 0.05 },
+            e('p', { style: ps }, 'I hold a Personal Performance Coaching Diploma with distinction from The Coaching Academy. I am a Level 6 Career Development Professional and DISC Practitioner. I also work full-time in university careers and coaching, so I am not just drawing on private practice.')
           ),
-          e(FadeIn, { delay:0.08 },
-            e('p', { style:ps }, 'I am based in Chorley, Lancashire. Sessions are on Zoom, but if you are local and would rather do this face to face, that works too.')
+          e(FadeIn, { delay: 0.08 },
+            e('p', { style: ps }, 'I am based in Chorley, Lancashire. Sessions are on Zoom, but if you are local and would rather do this face to face, that works too.')
           ),
-          e(FadeIn, { delay:0.1 },
-            e('p', { style:pInk }, 'My aim is for you to not need me. If we are still having regular sessions six months from now, I have probably not done my job properly.')
+          e(FadeIn, { delay: 0.1 },
+            e('p', { style: pInk }, 'My aim is for you to not need me. If we are still having regular sessions six months from now, I have probably not done my job properly.')
           )
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:28, paddingBottom:80 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 28, paddingBottom: 80 }) },
           e(FadeIn, null,
             e('div', {
-                style:{
-                  background:C.cream,
-                  border:'1px solid rgba(44,42,37,0.08)',
-                  borderRadius:10,
-                  padding:'32px 28px'
-                }
-              },
+              style: {
+                background: C.cream,
+                border: '1px solid rgba(44,42,37,0.08)',
+                borderRadius: 10,
+                padding: '32px 28px'
+              }
+            },
               e('p', {
-                style:{
-                  fontFamily:F.serif,
-                  fontSize:'clamp(1.15rem, 2.8vw, 1.35rem)',
-                  lineHeight:1.4,
-                  color:C.ink,
-                  marginBottom:10,
-                  fontWeight:400
+                style: {
+                  fontFamily: F.serif,
+                  fontSize: 'clamp(1.15rem, 2.8vw, 1.35rem)',
+                  lineHeight: 1.4,
+                  color: C.ink,
+                  marginBottom: 10,
+                  fontWeight: 400
                 }
               }, 'Not sure where to start?'),
               e('p', {
                 style: Object.assign({}, ps, {
-                  marginBottom:22,
-                  fontSize:'clamp(0.9rem, 2vw, 0.98rem)'
+                  marginBottom: 22,
+                  fontSize: 'clamp(0.9rem, 2vw, 0.98rem)'
                 })
-              }, 'Take the GAP Profile. It is free, takes about four minutes, and it will probably name something you have felt but could not quite put into words.'),
+              }, 'Take the GAP Profile. It is free, takes about four minutes, and gives you a clearer read on what may be getting in the way.'),
               e('a', {
-                href:GAP,
-                className:'btn-amber',
-                style:{ padding:'13px 26px', fontSize:'.9rem' }
+                href: GAP,
+                className: 'btn-amber',
+                style: { padding: '13px 26px', fontSize: '.9rem' }
               }, 'Take the free GAP Profile')
             )
           )
@@ -691,115 +737,105 @@
 
     function ParentsPage() {
       return e('main', null,
-        e('section', { style: Object.assign({}, w, { paddingTop:52, paddingBottom:44 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 52, paddingBottom: 44 }) },
           e(FadeIn, null,
             e('h1', {
-              style:{
-                fontFamily:F.serif,
-                fontSize:'clamp(2.1rem, 5.2vw, 2.9rem)',
-                fontWeight:400,
-                color:C.ink,
-                lineHeight:1.1,
-                letterSpacing:'-0.02em',
-                marginBottom:16
+              style: {
+                fontFamily: F.serif,
+                fontSize: 'clamp(2.1rem, 5.2vw, 2.9rem)',
+                fontWeight: 400,
+                color: C.ink,
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em',
+                marginBottom: 16
               }
             }, 'For parents and supporters')
           ),
-          e(FadeIn, { delay:0.08 },
+          e(FadeIn, { delay: 0.08 },
             e('p', {
-              style:{
-                fontFamily:F.sans,
-                fontSize:'clamp(1rem, 2.3vw, 1.12rem)',
-                lineHeight:1.6,
-                color:C.light,
-                maxWidth:520
+              style: {
+                fontFamily: F.sans,
+                fontSize: 'clamp(1rem, 2.3vw, 1.12rem)',
+                lineHeight: 1.6,
+                color: C.light,
+                maxWidth: 540
               }
             }, 'If someone you care about seems stuck, you are probably not imagining it. And telling them to just get on with it is usually not helping.')
           )
         ),
 
-        e('div', { style:w },
-          e('div', { style:{ height:1, background:'linear-gradient(to right, ' + C.ink + '15, ' + C.ink + '08)' }})
+        e('div', { style: w },
+          e('div', { style: { height: 1, background: 'linear-gradient(to right, ' + C.ink + '15, ' + C.ink + '08)' } })
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:44, paddingBottom:20 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 44, paddingBottom: 20 }) },
           e(FadeIn, null,
-            e('p', { style:pInk }, 'A lot of the people I work with are capable, thoughtful, and already have a rough idea what they should be doing next. The problem is not usually motivation. It is that something specific is getting in the way.')
+            e('p', { style: pInk }, 'I offer career coaching for people who know roughly what they should be doing next, but still are not making it happen. The problem usually is not motivation. It is that something specific is getting in the way.')
           ),
-          e(FadeIn, { delay:0.05 },
-            e('p', { style:ps }, 'That might be self-doubt, fear of getting it wrong, a move that does not quite feel like them yet, or simply not having the time, energy, or headspace to follow things through.')
+          e(FadeIn, { delay: 0.05 },
+            e('p', { style: ps }, 'That might be self-doubt, fear of getting it wrong, a move that does not quite feel like them yet, or simply not having the time, energy, or headspace to follow things through.')
           ),
-          e(FadeIn, { delay:0.08 },
-            e('p', { style:ps }, 'The GAP Profile gives them something concrete to look at instead of another conversation that goes in circles. It is free, it takes about four minutes, and there is no sign-up.')
+          e(FadeIn, { delay: 0.08 },
+            e('p', { style: ps }, 'The GAP Profile gives them something concrete to look at instead of another conversation that goes in circles. It is free, it takes about four minutes, and there is no sign-up.')
           ),
-          e(FadeIn, { delay:0.1 },
-            e('p', { style:pInk }, 'If the results feel accurate, they can leave it there, work through it themselves, or book a session with me.')
+          e(FadeIn, { delay: 0.1 },
+            e('p', { style: pInk }, 'If the results feel accurate, they can leave it there, work through it themselves, or book a session with me.')
           )
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:8, paddingBottom:40 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 8, paddingBottom: 40 }) },
           e(FadeIn, null,
-            e('div', { style:{ borderLeft:'3px solid ' + C.teal, paddingLeft:24 }},
+            e('div', { style: { borderLeft: '3px solid ' + C.teal, paddingLeft: 24 } },
               e('p', {
-                style:{
-                  fontFamily:F.serif,
-                  fontStyle:'italic',
-                  fontSize:'clamp(1.15rem, 2.8vw, 1.35rem)',
-                  lineHeight:1.5,
-                  color:C.ink,
-                  margin:0
+                style: {
+                  fontFamily: F.serif,
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(1.15rem, 2.8vw, 1.35rem)',
+                  lineHeight: 1.5,
+                  color: C.ink,
+                  margin: 0
                 }
               }, 'The best place to start is usually the GAP Profile, not another push.')
             )
           )
         ),
 
-        e('section', { style: Object.assign({}, w, { paddingTop:0, paddingBottom:80 }) },
+        e('section', { style: Object.assign({}, w, { paddingTop: 0, paddingBottom: 80 }) },
           e(FadeIn, null,
             e('div', {
-                style:{
-                  background:C.cream,
-                  border:'1px solid rgba(44,42,37,0.08)',
-                  borderRadius:10,
-                  padding:'32px 28px'
-                }
-              },
+              style: {
+                background: C.cream,
+                border: '1px solid rgba(44,42,37,0.08)',
+                borderRadius: 10,
+                padding: '32px 28px'
+              }
+            },
               e('p', {
-                style:{
-                  fontFamily:F.serif,
-                  fontSize:'clamp(1.15rem, 2.8vw, 1.35rem)',
-                  lineHeight:1.4,
-                  color:C.ink,
-                  marginBottom:10,
-                  fontWeight:400
+                style: {
+                  fontFamily: F.serif,
+                  fontSize: 'clamp(1.15rem, 2.8vw, 1.35rem)',
+                  lineHeight: 1.4,
+                  color: C.ink,
+                  marginBottom: 10,
+                  fontWeight: 400
                 }
               }, 'Start here'),
               e('p', {
                 style: Object.assign({}, ps, {
-                  marginBottom:22,
-                  fontSize:'clamp(0.9rem, 2vw, 0.98rem)'
+                  marginBottom: 22,
+                  fontSize: 'clamp(0.9rem, 2vw, 0.98rem)'
                 })
               }, 'You can send them the GAP Profile and let them look at it in their own time. If you want to ask whether coaching might help, email me and I will tell you honestly what seems useful.'),
-              e('div', { style:{ display:'flex', flexWrap:'wrap', gap:12 } },
+              e('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 12 } },
                 e('a', {
-                  href:GAP,
-                  className:'btn-amber',
-                  style:{ padding:'13px 26px', fontSize:'.9rem' }
+                  href: GAP,
+                  className: 'btn-amber',
+                  style: { padding: '13px 26px', fontSize: '.9rem' }
                 }, 'Take the free GAP Profile'),
                 e('a', {
-                  href:'mailto:hello@joemarkland.co.uk',
-                  style:{
-                    display:'inline-block',
-                    padding:'13px 22px',
-                    fontSize:'.9rem',
-                    borderRadius:6,
-                    textDecoration:'none',
-                    fontWeight:600,
-                    fontFamily:F.sans,
-                    color:C.ink,
-                    border:'1px solid ' + C.sandDk,
-                    background:C.white
-                  }
+                  href: 'mailto:hello@joemarkland.co.uk',
+                  className: 'btn-outline',
+                  style: { padding: '13px 22px', fontSize: '.9rem' }
                 }, 'Email Joe')
               )
             )
@@ -815,7 +851,6 @@
         if (h === '/parents') return 'parents';
         return 'home';
       });
-
       var page = pageState[0], setPage = pageState[1];
 
       useEffect(function() {
@@ -836,21 +871,21 @@
       }, [page]);
 
       return e('div', {
-          style:{
-            fontFamily:F.sans,
-            color:C.ink,
-            background:C.sand,
-            lineHeight:1.78,
-            minHeight:'100vh'
-          }
-        },
-        e(Nav, { page:page, setPage:setPage }),
+        style: {
+          fontFamily: F.sans,
+          color: C.ink,
+          background: C.sand,
+          lineHeight: 1.78,
+          minHeight: '100vh'
+        }
+      },
+        e(Nav, { page: page, setPage: setPage }),
         page === 'about'
           ? e(AboutPage)
           : page === 'parents'
             ? e(ParentsPage)
-            : e(HomePage, { setPage:setPage }),
-        e(Footer)
+            : e(HomePage, { setPage: setPage }),
+        e(Footer, { setPage: setPage })
       );
     }
 
