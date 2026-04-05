@@ -1,28 +1,1670 @@
-<section id="how-it-works">
-    <h2>How it works</h2>
-    <div class="FadeIn">
-        <p><strong>Take the GAP Profile:</strong> Gain insight into your strengths and areas for improvement.</p>
-        <p><strong>See what's blocking action:</strong> Identify barriers preventing your progress.</p>
-        <p><strong>Do something useful with it:</strong> Take actionable steps towards your goals.</p>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joe Markland — Career Coaching for People Who Feel Stuck</title>
+  <meta
+    name="description"
+    content="Career coaching for capable people who already know what they should be doing, but still are not doing it. Start with the free GAP Profile. No sign-up. About 4 minutes."
+  />
+  <meta property="og:title" content="Joe Markland — Career Coaching for People Who Feel Stuck" />
+  <meta
+    property="og:description"
+    content="You probably already know the move. The problem is that something keeps getting in the way. Start with the free GAP Profile."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1A1F3D" />
 
-<!-- Updated How I Work section -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap"
+    rel="stylesheet"
+  />
 
-<p>I've had the same conversation hundreds of times...</p>
-<img src='D29A0595-88DA-4447-AF1C-E32353E143F0.jpeg' alt='Joe Markland, career coach' style='width: 100%; border-radius: 10px; aspect-ratio: 4/5; object-fit: cover; max-height: 420px; margin: 28px 0;' />
-<p>"Some inspirational quote..." - Joe Markland</p>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-<!-- Added Joe's photo in About page -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #f5f0e8;
+      color: #2c2a25;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-<!-- Add Joe's photo in the About page -->
-<p>...</p>
-<img src='D29A0595-88DA-4447-AF1C-E32353E143F0.jpeg' alt='Joe Markland, career coach' style='width: 100%; border-radius: 10px; aspect-ratio: 4/5; object-fit: cover; max-height: 420px; margin: 28px 0;' />
-<p>Some other text...</p>
+    img { max-width: 100%; display: block; }
+    a { color: #2a9d8f; text-underline-offset: 2px; }
+    h1, h2, h3, h4 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+    p { margin: 0; }
+    button, input, textarea, select { font: inherit; }
+    *:focus-visible {
+      outline: 2px solid #2a9d8f;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+    ::selection { background: rgba(42,157,143,.16); }
 
-<!-- Confirm FAQ link and active state for Nav -->
+    :root {
+      --sand: #f5f0e8;
+      --sand-2: #faf7f2;
+      --sand-3: #ebe4d8;
+      --cream: #fefbf4;
+      --ink: #2c2a25;
+      --mid: #5c5850;
+      --light: #6e6960;
+      --navy: #1a1f3d;
+      --teal: #2a9d8f;
+      --amber: #e9a319;
+      --amber-hover: #d08a10;
+      --deep-blue: #1b6b8a;
+      --shadow: 0 10px 30px rgba(26,31,61,.08);
+      --max: 1120px;
+      --content: 720px;
+      --tap: 46px;
+    }
 
-<script>
-    const isFAQActive = props => props.setPage === 'parents' && window.scrollTo(0, 0);
-    const navLinkStyle = props.page === 'home' ? 'rgba(245, 240, 232, 0.9)' : 'rgba(245, 240, 232, 0.5)';
-</script>
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .narrow {
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+    }
+
+    .section { padding: 72px 0; }
+    .section-tight { padding: 54px 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: rgba(42,157,143,.5);
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      font-size: 1.04rem;
+      line-height: 1.7;
+      color: var(--mid);
+      max-width: 650px;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid var(--sand-3);
+      margin: 0;
+    }
+
+    .btn {
+      min-height: var(--tap);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform .16s ease, background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--ink);
+      box-shadow: 0 6px 18px rgba(233,163,25,.22);
+    }
+    .btn-primary:hover {
+      background: var(--amber-hover);
+      color: var(--ink);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(44,42,37,.14);
+      color: var(--ink);
+      background: rgba(255,255,255,.42);
+      backdrop-filter: blur(4px);
+    }
+    .btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: rgba(255,255,255,.75);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(26,31,61,.92);
+      border-bottom: 1px solid rgba(245,240,232,.06);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: rgba(245,240,232,.94);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: baseline;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.24rem;
+      line-height: 1;
+    }
+
+    .brand .dot { color: var(--teal); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      color: rgba(245,240,232,.68);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 500;
+      transition: color .2s ease;
+      min-height: var(--tap);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: rgba(245,240,232,.98);
+    }
+
+    .hero {
+      position: relative;
+      overflow: clip;
+      padding: 74px 0 26px;
+      background:
+        radial-gradient(circle at top right, rgba(42,157,143,.11), transparent 32%),
+        radial-gradient(circle at 0% 20%, rgba(26,31,61,.05), transparent 24%),
+        linear-gradient(to bottom, #f8f4ed 0%, #f5f0e8 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .hero-copy { max-width: 690px; }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(26,31,61,.05);
+      color: var(--navy);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.55rem, 6vw, 5rem);
+      line-height: .98;
+      color: var(--ink);
+      margin-bottom: 18px;
+      max-width: 12ch;
+    }
+
+    .hero-title .accent {
+      color: var(--teal);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.02rem, 2vw, 1.16rem);
+      line-height: 1.72;
+      color: var(--mid);
+      max-width: 58ch;
+      margin-bottom: 22px;
+    }
+
+    .hero-proof-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(44,42,37,.08);
+      color: var(--ink);
+      font-size: .86rem;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .hero-risk {
+      color: var(--light);
+      font-size: .86rem;
+      line-height: 1.6;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(44,42,37,.08);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .hero-card-top { padding: 18px 18px 0; }
+    .hero-card-body { padding: 18px; }
+
+    .hero-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .hero-badge {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .score-chip {
+      min-height: 32px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(42,157,143,.1);
+      color: var(--teal);
+      font-size: .78rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .pattern-item {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(44,42,37,.08);
+      background: linear-gradient(180deg, rgba(42,157,143,.08), rgba(255,255,255,.95));
+    }
+
+    .pattern-k {
+      display: block;
+      color: var(--light);
+      font-size: .73rem;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 700;
+    }
+
+    .pattern-name {
+      display: block;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.22rem;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .pattern-desc {
+      color: var(--mid);
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+
+    .card-note {
+      padding: 14px 18px 18px;
+      border-top: 1px solid rgba(44,42,37,.08);
+      background: rgba(26,31,61,.03);
+      color: var(--mid);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+
+    .proof-strip { padding: 12px 0 0; }
+
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .proof-box {
+      min-height: 94px;
+      background: rgba(255,255,255,.64);
+      border: 1px solid rgba(44,42,37,.08);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(26,31,61,.04);
+    }
+
+    .proof-box strong {
+      display: block;
+      font-size: 1.06rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .proof-box span {
+      color: var(--mid);
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .step-card, .trust-card, .offer-card, .faq-card, .quote-card, .about-photo-card {
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(44,42,37,.08);
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(26,31,61,.04);
+    }
+
+    .step-card { padding: 22px; }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26,31,61,.07);
+      color: var(--navy);
+      font-size: .88rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .step-title {
+      font-size: 1.42rem;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .step-copy {
+      color: var(--mid);
+      font-size: .97rem;
+      line-height: 1.68;
+    }
+
+    .highlight-panel {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(26,31,61,.98), rgba(26,31,61,.92));
+      color: #f5f0e8;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-panel h3 {
+      font-size: 1.7rem;
+      line-height: 1.08;
+      margin-bottom: 12px;
+      color: #f5f0e8;
+    }
+
+    .highlight-panel p {
+      color: rgba(245,240,232,.75);
+      line-height: 1.72;
+      font-size: .98rem;
+    }
+
+    .quote-line {
+      margin: 22px 0 0;
+      padding-left: 18px;
+      border-left: 3px solid var(--teal);
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.38rem;
+      line-height: 1.42;
+      color: #fff8ee;
+      font-style: italic;
+    }
+
+    .text-block {
+      display: grid;
+      gap: 16px;
+      max-width: 680px;
+    }
+
+    .text-block p {
+      color: var(--mid);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .text-block p.stronger {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .trust-layout {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .photo-card-inner {
+      padding: 18px;
+    }
+
+    .coach-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 16px;
+      background: #ddd;
+      margin-bottom: 14px;
+    }
+
+    .photo-caption {
+      color: var(--mid);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+    .photo-caption strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .trust-card { padding: 24px; }
+
+    .trust-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .trust-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--mid);
+      font-size: .96rem;
+      line-height: 1.65;
+    }
+
+    .trust-item strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: .55em;
+    }
+
+    .quote-stack {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .quote-card { padding: 22px; }
+
+    .quote-card blockquote {
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .quote-card cite {
+      font-style: normal;
+      color: var(--light);
+      font-size: .84rem;
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .offer-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-card.primary {
+      border-color: rgba(233,163,25,.3);
+      box-shadow: 0 10px 28px rgba(233,163,25,.12);
+    }
+
+    .offer-card.featured::after {
+      content: "Best place to start";
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(233,163,25,.16);
+      color: #8a5b00;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .offer-tier {
+      color: var(--light);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .offer-title {
+      font-size: 1.6rem;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .offer-price {
+      font-size: 1rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .offer-copy {
+      color: var(--mid);
+      font-size: .95rem;
+      line-height: 1.68;
+      margin-bottom: 18px;
+    }
+
+    .offer-points {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .offer-points span {
+      color: var(--ink);
+      font-size: .9rem;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .offer-points span::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--teal);
+      position: absolute;
+      top: .55em;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .faq-wrap {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .faq-card { overflow: hidden; }
+
+    .faq-btn {
+      width: 100%;
+      min-height: var(--tap);
+      padding: 18px 20px;
+      background: transparent;
+      border: 0;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: .96rem;
+      line-height: 1.5;
+    }
+
+    .faq-btn:hover { color: var(--teal); }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      color: var(--teal);
+      flex-shrink: 0;
+      transition: transform .2s ease;
+    }
+
+    .faq-panel {
+      overflow: hidden;
+      transition: max-height .28s ease, opacity .2s ease;
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .faq-panel.open {
+      max-height: 240px;
+      opacity: 1;
+    }
+
+    .faq-inner {
+      padding: 0 20px 18px;
+      color: var(--mid);
+      font-size: .95rem;
+      line-height: 1.75;
+    }
+
+    .cta-band {
+      padding: 34px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(42,157,143,.12), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.62));
+      border: 1px solid rgba(44,42,37,.08);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.03;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    .cta-band p {
+      max-width: 650px;
+      margin: 0 auto 22px;
+      color: var(--mid);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    .footer {
+      background: var(--navy);
+      color: rgba(245,240,232,.7);
+      padding: 42px 0 28px;
+      margin-top: 80px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      color: rgba(245,240,232,.95);
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.18rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-copy {
+      color: rgba(245,240,232,.56);
+      font-size: .9rem;
+      line-height: 1.7;
+      max-width: 38ch;
+    }
+
+    .footer-title {
+      color: rgba(245,240,232,.95);
+      font-size: .84rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(245,240,232,.58);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s ease;
+      min-height: var(--tap);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-links a:hover {
+      color: var(--teal);
+    }
+
+    .footer-meta {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(245,240,232,.08);
+      color: rgba(245,240,232,.28);
+      font-size: .76rem;
+      line-height: 1.6;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .about-photo-card { overflow: hidden; }
+    .about-photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+    .about-photo-meta {
+      padding: 16px 18px 18px;
+      color: var(--mid);
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      z-index: 999;
+      background: #fff;
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+    .skip-link:focus { left: 8px; }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .trust-layout,
+      .about-layout,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .offer-grid,
+      .proof-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-title { max-width: 13ch; }
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 58px 0; }
+      .section-tight { padding: 44px 0; }
+
+      .nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 14px;
+      }
+
+      .hero { padding-top: 42px; }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+      }
+
+      .feature-grid,
+      .offer-grid,
+      .proof-row {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-band { padding: 24px 18px; }
+
+      .hero-actions { align-items: stretch; }
+      .hero-actions .btn { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div id="root"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const e = React.createElement;
+      const useState = React.useState;
+      const useEffect = React.useEffect;
+      const useRef = React.useRef;
+
+      const GAP = 'https://gapprofile.co.uk';
+      const EMAIL = 'mailto:hello@joemarkland.co.uk';
+      const SESSION = 'mailto:hello@joemarkland.co.uk?subject=1:1%20GAP%20Coaching%20Session';
+      const PACKAGE = 'mailto:hello@joemarkland.co.uk?subject=3-Month%20Coaching%20Package%20%2B%20DISC%20Profile';
+      const LINKEDIN = 'https://www.linkedin.com/in/joe-markland-coaching';
+      const PHOTO = 'D29A0595-88DA-4447-AF1C-E32353E143F0.jpeg';
+
+      const FAQ_DATA = [
+        {
+          q: 'I already know what I should be doing. Why would this help?',
+          a: 'Because knowing what to do is not the same as doing it. The GAP Profile helps you get a clearer read on what may actually be getting in the way, so you can stop circling the same move and work out what needs to shift.'
+        },
+        {
+          q: 'What happens in a 1:1 session?',
+          a: 'We focus on the move you keep not making, use the GAP Profile result as the starting point if you have one, and work out what may be keeping the pattern in place. The aim is clarity and a more workable next step.'
+        },
+        {
+          q: 'Do you tell me what to do?',
+          a: 'No. The actions need to come from you. My job is to help you see the problem more clearly, challenge what needs challenging, and help you get to something honest and doable.'
+        },
+        {
+          q: 'What is the 3-month coaching package + DISC profile for?',
+          a: 'That is for people who want to work on this more properly over time. It is deeper support for patterns that feel more layered or more ingrained, with DISC adding another lens on communication and behavioural style. It is not where most people should start.'
+        },
+        {
+          q: 'Looking at this for your son or daughter?',
+          a: 'There is a separate page with more information for parents and supporters.'
+        }
+      ];
+
+      function FadeIn(props) {
+        const ref = useRef(null);
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const [visible, setVisible] = useState(reduce);
+        const delay = props.delay || 0;
+
+        useEffect(function () {
+          if (reduce) return;
+          const el = ref.current;
+          if (!el) return;
+          const observer = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+              setVisible(true);
+              observer.disconnect();
+            }
+          }, { threshold: 0.12 });
+
+          observer.observe(el);
+          return function () { observer.disconnect(); };
+        }, [reduce]);
+
+        return e('div', {
+          ref,
+          style: Object.assign({
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(14px)',
+            transition: reduce ? 'none' : 'opacity .55s ease ' + delay + 's, transform .55s ease ' + delay + 's'
+          }, props.style || {})
+        }, props.children);
+      }
+
+      function Header(props) {
+        function navClick(ev, page) {
+          ev.preventDefault();
+          props.setPage(page);
+          window.scrollTo(0, 0);
+        }
+
+        return e('header', { className: 'site-header' },
+          e('div', { className: 'container nav' },
+            e('a', {
+              href: '#/',
+              className: 'brand',
+              onClick: function (ev) { navClick(ev, 'home'); }
+            }, 'Joe Markland', e('span', { className: 'dot' }, '.')),
+            e('nav', { className: 'nav-links', 'aria-label': 'Main navigation' },
+              e('a', {
+                href: '#/about',
+                className: 'nav-link' + (props.page === 'about' ? ' active' : ''),
+                onClick: function (ev) { navClick(ev, 'about'); }
+              }, 'About'),
+              e('a', {
+                href: '#/parents',
+                className: 'nav-link' + (props.page === 'parents' ? ' active' : ''),
+                onClick: function (ev) { navClick(ev, 'parents'); }
+              }, 'For parents'),
+              e('a', { href: GAP, className: 'btn btn-primary' }, 'Take the GAP Profile')
+            )
+          )
+        );
+      }
+
+      function HeroHome() {
+        return e('section', { className: 'hero' },
+          e('div', { className: 'container hero-grid' },
+            e(FadeIn, { style: { maxWidth: '690px' } },
+              e('div', { className: 'hero-copy' },
+                e('div', { className: 'hero-kicker' }, 'Career coaching for the knowing-doing gap'),
+                e('h1', { className: 'hero-title' },
+                  'You probably already know the move.',
+                  e('br'),
+                  e('span', { className: 'accent' }, 'The problem is that something keeps getting in the way.')
+                ),
+                e('p', { className: 'hero-sub' },
+                  'For capable people who roughly know what they should be doing next, but still are not doing it. Start with the ',
+                  e('strong', null, 'free GAP Profile'),
+                  ' — a short way to get clearer on what may be stopping movement.'
+                ),
+                e('div', { className: 'hero-proof-inline', 'aria-label': 'Key proof points' },
+                  e('span', { className: 'pill' }, 'Free to take'),
+                  e('span', { className: 'pill' }, 'No sign-up'),
+                  e('span', { className: 'pill' }, 'About 4 minutes'),
+                  e('span', { className: 'pill' }, 'A clearer read on what is in the way')
+                ),
+                e('div', { className: 'hero-actions' },
+                  e('a', { href: GAP, className: 'btn btn-primary' }, 'Take the free GAP Profile'),
+                  e('a', { href: '#how-it-works', className: 'btn btn-secondary' }, 'See how it works')
+                ),
+                e('p', { className: 'hero-risk' },
+                  'Free to take. No faff. You can stop there, use the result yourself, or bring it into a focused coaching session.'
+                )
+              )
+            ),
+            e(FadeIn, { delay: 0.06 },
+              e('aside', { className: 'hero-card', 'aria-label': 'Preview of one possible pattern' },
+                e('div', { className: 'hero-card-top' },
+                  e('div', { className: 'hero-card-head' },
+                    e('div', null,
+                      e('div', { className: 'hero-badge' }, 'One possible pattern'),
+                      e('h2', {
+                        style: {
+                          fontSize: '1.55rem',
+                          lineHeight: '1.08',
+                          color: 'var(--ink)',
+                          marginTop: '4px'
+                        }
+                      }, 'The Capable Doubter')
+                    ),
+                    e('span', { className: 'score-chip' }, 'Example')
+                  )
+                ),
+                e('div', { className: 'hero-card-body' },
+                  e('div', { className: 'pattern-item' },
+                    e('span', { className: 'pattern-k' }, 'What it sounds like'),
+                    e('span', { className: 'pattern-name' }, 'You can do this. You just do not trust your own evidence.'),
+                    e('span', { className: 'pattern-desc' }, 'Most people fall into a small number of patterns. This is one of them.')
+                  )
+                ),
+                e('div', { className: 'card-note' },
+                  'The point is not to label you. It is to help you see what may be keeping the same move stuck.'
+                )
+              )
+            )
+          ),
+          e('div', { className: 'container proof-strip' },
+            e(FadeIn, { delay: 0.1 },
+              e('div', { className: 'proof-row' },
+                e('div', { className: 'proof-box' },
+                  e('strong', null, 'Free first step'),
+                  e('span', null, 'A simple way to see whether this feels accurate before you do anything else.')
+                ),
+                e('div', { className: 'proof-box' },
+                  e('strong', null, 'No sign-up'),
+                  e('span', null, 'No awkward gatekeeping. Take it and see what comes back.')
+                ),
+                e('div', { className: 'proof-box' },
+                  e('strong', null, 'About 4 minutes'),
+                  e('span', null, 'Short enough to do properly. Long enough to be useful.')
+                ),
+                e('div', { className: 'proof-box' },
+                  e('strong', null, 'Focused next step'),
+                  e('span', null, 'Use the result yourself or take it into a live session.')
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function HowItWorks() {
+        return e('section', { className: 'section', id: 'how-it-works' },
+          e('div', { className: 'container' },
+            e(FadeIn, null,
+              e('div', { className: 'eyebrow' }, 'How it works'),
+              e('h2', { className: 'section-title' }, 'A simpler way to stop going round the houses'),
+              e('p', { className: 'section-intro' },
+                'This works best when the move is already somewhere in view, but something keeps interfering with action.'
+              )
+            ),
+            e('div', { className: 'feature-grid' },
+              e(FadeIn, { delay: 0.04 },
+                e('div', { className: 'step-card' },
+                  e('div', { className: 'step-num' }, '1'),
+                  e('h3', { className: 'step-title' }, 'Take the GAP Profile'),
+                  e('p', { className: 'step-copy' },
+                    'A free first step to help you get clearer on what may actually be getting in the way.'
+                  )
+                )
+              ),
+              e(FadeIn, { delay: 0.08 },
+                e('div', { className: 'step-card' },
+                  e('div', { className: 'step-num' }, '2'),
+                  e('h3', { className: 'step-title' }, 'See what may be blocking action'),
+                  e('p', { className: 'step-copy' },
+                    'Not more general advice. A clearer read on why the same move still is not happening.'
+                  )
+                )
+              ),
+              e(FadeIn, { delay: 0.12 },
+                e('div', { className: 'step-card' },
+                  e('div', { className: 'step-num' }, '3'),
+                  e('h3', { className: 'step-title' }, 'Do something useful with it'),
+                  e('p', { className: 'step-copy' },
+                    'Use the result yourself, bring it into a focused 1:1 session, or go deeper if this needs more than one conversation.'
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function WhyThisHelps() {
+        return e('section', { className: 'section-tight' },
+          e('div', { className: 'container narrow' },
+            e(FadeIn, null,
+              e('div', { className: 'eyebrow' }, 'Why this helps'),
+              e('h2', { className: 'section-title' }, 'The advice you have already had might not be wrong. It just may not be reaching the bit that is stuck.'),
+              e('div', { className: 'text-block', style: { marginTop: '20px' } },
+                e('p', { className: 'stronger' },
+                  'Most people who land here do not need more ideas. They usually already know the move.'
+                ),
+                e('p', null,
+                  'What they need is a clearer read on why they keep thinking about it without making it. That is the gap this work is trying to close.'
+                ),
+                e('p', null,
+                  'Maybe you keep opening the CV and closing it again. Maybe you keep researching without starting. Maybe you keep telling yourself you will do it properly next week.'
+                ),
+                e('p', { className: 'stronger' },
+                  'That usually is not laziness. And it usually is not a lack of information.'
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function TrustSection() {
+        return e('section', { className: 'section' },
+          e('div', { className: 'container' },
+            e(FadeIn, null,
+              e('div', { className: 'eyebrow' }, 'Trust and credibility'),
+              e('h2', { className: 'section-title' }, 'Clear, focused, useful coaching'),
+              e('p', { className: 'section-intro' },
+                'This is for thoughtful people who are a bit tired of vague motivation and generic career advice.'
+              )
+            ),
+            e('div', { className: 'trust-layout' },
+              e(FadeIn, { delay: 0.04 },
+                e('div', { className: 'about-photo-card' },
+                  e('div', { className: 'photo-card-inner' },
+                    e('img', {
+                      src: PHOTO,
+                      alt: 'Joe Markland',
+                      className: 'coach-photo'
+                    }),
+                    e('div', { className: 'photo-caption' },
+                      e('strong', null, 'Joe Markland'),
+                      'Career coach based in Chorley, Lancashire. Sessions on Zoom, with face-to-face possible locally.'
+                    )
+                  )
+                )
+              ),
+              e(FadeIn, { delay: 0.08 },
+                e('div', null,
+                  e('div', { className: 'trust-card' },
+                    e('h3', {
+                      style: {
+                        fontSize: '1.55rem',
+                        lineHeight: '1.08',
+                        color: 'var(--ink)',
+                        marginBottom: '8px'
+                      }
+                    }, 'What you can expect'),
+                    e('div', { className: 'trust-list' },
+                      e('div', { className: 'trust-item' },
+                        e('span', { className: 'dot' }),
+                        e('div', null,
+                          e('strong', null, 'Qualified and grounded.'),
+                          ' Personal Performance Coaching Diploma with distinction, Level 6 Career Development Professional, and DISC Practitioner.'
+                        )
+                      ),
+                      e('div', { className: 'trust-item' },
+                        e('span', { className: 'dot' }),
+                        e('div', null,
+                          e('strong', null, 'Focused work.'),
+                          ' Not a 20-point plan. Usually one or two useful things that actually make movement easier.'
+                        )
+                      ),
+                      e('div', { className: 'trust-item' },
+                        e('span', { className: 'dot' }),
+                        e('div', null,
+                          e('strong', null, 'A sensible place to start.'),
+                          ' For most people, the GAP Profile is the best first step.'
+                        )
+                      )
+                    )
+                  ),
+                  e('div', { className: 'quote-stack' },
+                    e('div', { className: 'quote-card' },
+                      e('blockquote', null,
+                        '“This finally put words to what had been going on. I did not need another pep talk. I needed to understand why I was still stuck.”'
+                      ),
+                      e('cite', null, 'Testimonial placeholder')
+                    ),
+                    e('div', { className: 'quote-card' },
+                      e('blockquote', null,
+                        '“Clear, honest, and practical. It felt like someone could actually see the pattern instead of giving me more generic advice.”'
+                      ),
+                      e('cite', null, 'Testimonial placeholder')
+                    )
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function OffersSection() {
+        return e('section', { className: 'section-tight' },
+          e('div', { className: 'container' },
+            e(FadeIn, null,
+              e('div', { className: 'eyebrow' }, 'Ways to work together'),
+              e('h2', { className: 'section-title' }, 'Start with the free assessment. Go deeper only if it is needed.'),
+              e('p', { className: 'section-intro' },
+                'The GAP Profile stays the main entry point. Everything else sits underneath it.'
+              )
+            ),
+            e('div', { className: 'offer-grid' },
+              e(FadeIn, { delay: 0.04 },
+                e('div', { className: 'offer-card primary featured' },
+                  e('div', { className: 'offer-tier' }, 'First step'),
+                  e('h3', { className: 'offer-title' }, 'GAP Profile'),
+                  e('div', { className: 'offer-price' }, 'Free'),
+                  e('p', { className: 'offer-copy' },
+                    'A short first step to help you pinpoint what may be getting in the way of action.'
+                  ),
+                  e('div', { className: 'offer-points' },
+                    e('span', null, 'Free to take'),
+                    e('span', null, 'No sign-up required'),
+                    e('span', null, 'About 4 minutes')
+                  ),
+                  e('a', { href: GAP, className: 'btn btn-primary' }, 'Take the GAP Profile')
+                )
+              ),
+              e(FadeIn, { delay: 0.08 },
+                e('div', { className: 'offer-card' },
+                  e('div', { className: 'offer-tier' }, 'Focused support'),
+                  e('h3', { className: 'offer-title' }, '1:1 GAP session'),
+                  e('div', { className: 'offer-price' }, '60 minutes · £97'),
+                  e('p', { className: 'offer-copy' },
+                    'A focused live session using your result as a starting point. Best once the profile already feels accurate.'
+                  ),
+                  e('div', { className: 'offer-points' },
+                    e('span', null, 'Clarify the move you keep not making'),
+                    e('span', null, 'Work out what may be keeping the pattern in place'),
+                    e('span', null, 'Leave with a more workable next step')
+                  ),
+                  e('a', { href: SESSION, className: 'btn btn-secondary' }, 'Ask about a 1:1 session')
+                )
+              ),
+              e(FadeIn, { delay: 0.12 },
+                e('div', { className: 'offer-card' },
+                  e('div', { className: 'offer-tier' }, 'Deeper work'),
+                  e('h3', { className: 'offer-title' }, '3-month coaching + DISC'),
+                  e('div', { className: 'offer-price' }, 'Longer-term package'),
+                  e('p', { className: 'offer-copy' },
+                    'For people who want to work on this more properly over time, with DISC adding another useful lens on communication and behavioural style.'
+                  ),
+                  e('div', { className: 'offer-points' },
+                    e('span', null, 'Longer runway for change'),
+                    e('span', null, 'Useful when the issue feels more layered'),
+                    e('span', null, 'Not the best first step for most people')
+                  ),
+                  e('a', { href: PACKAGE, className: 'btn btn-secondary' }, 'Ask about coaching + DISC')
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function FAQSection(props) {
+        const state = useState(null);
+        const open = state[0];
+        const setOpen = state[1];
+
+        return e('section', { className: 'section-tight', id: 'faq' },
+          e('div', { className: 'container narrow' },
+            e(FadeIn, null,
+              e('div', { className: 'eyebrow' }, 'Questions'),
+              e('h2', { className: 'section-title' }, 'A few things people usually ask')
+            ),
+            e('div', { className: 'faq-wrap' },
+              FAQ_DATA.map(function (item, i) {
+                const isOpen = open === i;
+                const isParents = i === 4;
+                return e(FadeIn, { delay: i * 0.03, key: i },
+                  e('div', { className: 'faq-card' },
+                    e('button', {
+                      className: 'faq-btn',
+                      'aria-expanded': isOpen,
+                      'aria-controls': 'faq-panel-' + i,
+                      onClick: function () { setOpen(isOpen ? null : i); }
+                    },
+                      e('span', null, item.q),
+                      e('span', {
+                        className: 'faq-icon',
+                        'aria-hidden': 'true',
+                        style: { transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }
+                      }, '+')
+                    ),
+                    e('div', {
+                      id: 'faq-panel-' + i,
+                      className: 'faq-panel' + (isOpen ? ' open' : '')
+                    },
+                      e('div', { className: 'faq-inner' },
+                        isParents
+                          ? e(React.Fragment, null,
+                              'There is a separate page with more information for parents and supporters. ',
+                              e('a', {
+                                href: '#/parents',
+                                onClick: function (ev) {
+                                  ev.preventDefault();
+                                  props.setPage('parents');
+                                  window.scrollTo(0, 0);
+                                }
+                              }, 'Read more →')
+                            )
+                          : item.a
+                      )
+                    )
+                  )
+                );
+              })
+            )
+          )
+        );
+      }
+
+      function FinalCTA(props) {
+        return e('section', { className: 'section' },
+          e('div', { className: 'container' },
+            e(FadeIn, null,
+              e('div', { className: 'cta-band' },
+                e('h2', null,
+                  'Start with the GAP Profile.',
+                  e('br'),
+                  'See what may actually be in the way.'
+                ),
+                e('p', null,
+                  'That is the easiest way to see whether this is useful. Free to take, no sign-up, about four minutes. If the result feels accurate, you can leave it there or take it into a more focused conversation.'
+                ),
+                e('div', {
+                  style: {
+                    display: 'flex',
+                    gap: '12px',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap'
+                  }
+                },
+                  e('a', { href: GAP, className: 'btn btn-primary' }, 'Take the free GAP Profile'),
+                  e('a', {
+                    href: '#/about',
+                    className: 'btn btn-secondary',
+                    onClick: function (ev) {
+                      ev.preventDefault();
+                      props.setPage('about');
+                      window.scrollTo(0, 0);
+                    }
+                  }, 'Read about Joe')
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function HomePage(props) {
+        return e('main', { id: 'main' },
+          e(HeroHome),
+          e(HowItWorks),
+          e('hr', { className: 'divider' }),
+          e(WhyThisHelps),
+          e('hr', { className: 'divider' }),
+          e(TrustSection),
+          e('hr', { className: 'divider' }),
+          e(OffersSection),
+          e('hr', { className: 'divider' }),
+          e(FAQSection, props),
+          e(FinalCTA, props)
+        );
+      }
+
+      function AboutPage() {
+        return e('main', { id: 'main' },
+          e('section', { className: 'section' },
+            e('div', { className: 'container about-layout' },
+              e(FadeIn, null,
+                e('div', null,
+                  e('div', { className: 'eyebrow' }, 'About Joe'),
+                  e('h1', { className: 'section-title' }, 'A coaching approach built around what keeps stopping action'),
+                  e('div', { className: 'text-block', style: { marginTop: '22px' } },
+                    e('p', { className: 'stronger' },
+                      'I am a career coach for people who already know what they should be doing, but still are not doing it.'
+                    ),
+                    e('p', null,
+                      'I am less interested in giving people more career advice, and more interested in understanding why they still feel stuck when they already know what to do.'
+                    ),
+                    e('p', null,
+                      'That is what led me to build the GAP Profile: a short first step designed to help people work out what may actually be getting in the way.'
+                    )
+                  )
+                )
+              ),
+              e(FadeIn, { delay: 0.06 },
+                e('div', { className: 'about-photo-card' },
+                  e('img', {
+                    src: PHOTO,
+                    alt: 'Joe Markland'
+                  }),
+                  e('div', { className: 'about-photo-meta' },
+                    'Based in Chorley, Lancashire. Sessions on Zoom, with face-to-face possible locally.'
+                  )
+                )
+              )
+            )
+          ),
+          e('section', { className: 'section-tight' },
+            e('div', { className: 'container' },
+              e(FadeIn, null,
+                e('div', { className: 'highlight-panel' },
+                  e('h3', null, 'I work best with people who are thoughtful, capable, and already have a fair idea what they should be doing next'),
+                  e('p', null,
+                    'They usually do not need more ideas. They need to work out what keeps getting in the way, because until that bit becomes clear, it is very easy to keep thinking about the same move without actually making it.'
+                  ),
+                  e('p', { style: { marginTop: '12px' } },
+                    'Personal Performance Coaching Diploma with distinction. Level 6 Career Development Professional. DISC Practitioner.'
+                  ),
+                  e('div', { className: 'quote-line' },
+                    'My aim is for you to not need me.'
+                  )
+                )
+              )
+            )
+          ),
+          e('section', { className: 'section-tight' },
+            e('div', { className: 'container narrow' },
+              e(FadeIn, null,
+                e('div', { className: 'cta-band' },
+                  e('h2', null, 'Not sure where to start?'),
+                  e('p', null,
+                    'For most people, the GAP Profile is the best place to start. It gives us something concrete to work from quickly. If the result feels accurate and you want help acting on it, that is where live coaching becomes more useful.'
+                  ),
+                  e('div', {
+                    style: {
+                      display: 'flex',
+                      gap: '12px',
+                      justifyContent: 'center',
+                      flexWrap: 'wrap'
+                    }
+                  },
+                    e('a', { href: GAP, className: 'btn btn-primary' }, 'Take the free GAP Profile'),
+                    e('a', { href: SESSION, className: 'btn btn-secondary' }, 'Ask about a 1:1 session')
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function ParentsPage() {
+        return e('main', { id: 'main' },
+          e('section', { className: 'section' },
+            e('div', { className: 'container narrow' },
+              e(FadeIn, null,
+                e('div', { className: 'eyebrow' }, 'For parents and supporters'),
+                e('h1', { className: 'section-title' }, 'If someone you care about seems stuck, you are probably not imagining it'),
+                e('div', { className: 'text-block', style: { marginTop: '22px' } },
+                  e('p', { className: 'stronger' },
+                    'Telling them to just get on with it usually does not help.'
+                  ),
+                  e('p', null,
+                    'The problem is often not motivation. It is that something more specific is getting in the way — self-doubt, fear of getting it wrong, a move that does not yet feel like them, or simply not having the capacity to carry it through.'
+                  ),
+                  e('p', null,
+                    'The GAP Profile gives them something more concrete to look at than another conversation that goes in circles.'
+                  )
+                )
+              )
+            )
+          ),
+          e('section', { className: 'section-tight' },
+            e('div', { className: 'container' },
+              e(FadeIn, null,
+                e('div', { className: 'highlight-panel' },
+                  e('h3', null, 'A more useful starting point'),
+                  e('p', null,
+                    'The best place to start is usually the GAP Profile, not another push.'
+                  ),
+                  e('div', { className: 'quote-line' },
+                    'If you want to ask whether coaching might help, email me and I will tell you honestly what seems useful.'
+                  )
+                )
+              ),
+              e(FadeIn, { delay: 0.06, style: { marginTop: '18px' } },
+                e('div', { className: 'cta-band' },
+                  e('h2', null, 'Start here'),
+                  e('p', null,
+                    'Send them the GAP Profile and let them take it in their own time. It is free, there is no sign-up, and it gives them a more structured way to understand what may be going on.'
+                  ),
+                  e('div', {
+                    style: {
+                      display: 'flex',
+                      gap: '12px',
+                      justifyContent: 'center',
+                      flexWrap: 'wrap'
+                    }
+                  },
+                    e('a', { href: GAP, className: 'btn btn-primary' }, 'Take the free GAP Profile'),
+                    e('a', { href: EMAIL, className: 'btn btn-secondary' }, 'Email Joe')
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+
+      function Footer(props) {
+        function navClick(ev, page) {
+          ev.preventDefault();
+          props.setPage(page);
+          window.scrollTo(0, 0);
+        }
+
+        return e('footer', { className: 'footer' },
+          e('div', { className: 'container' },
+            e('div', { className: 'footer-grid' },
+              e('div', null,
+                e('div', { className: 'footer-brand' }, 'Joe Markland'),
+                e('p', { className: 'footer-copy' },
+                  'Career coaching for people who know the move but still are not making it. Start with the GAP Profile.'
+                )
+              ),
+              e('div', null,
+                e('div', { className: 'footer-title' }, 'Explore'),
+                e('div', { className: 'footer-links' },
+                  e('a', { href: '#/', onClick: function (ev) { navClick(ev, 'home'); } }, 'Home'),
+                  e('a', { href: '#/about', onClick: function (ev) { navClick(ev, 'about'); } }, 'About'),
+                  e('a', { href: '#/parents', onClick: function (ev) { navClick(ev, 'parents'); } }, 'For parents'),
+                  e('a', { href: GAP }, 'Take the GAP Profile')
+                )
+              ),
+              e('div', null,
+                e('div', { className: 'footer-title' }, 'Contact'),
+                e('div', { className: 'footer-links' },
+                  e('a', { href: EMAIL }, 'hello@joemarkland.co.uk'),
+                  e('a', { href: LINKEDIN, target: '_blank', rel: 'noopener noreferrer' }, 'LinkedIn'),
+                  e('a', { href: SESSION }, 'Ask about a 1:1 session'),
+                  e('a', { href: PACKAGE }, 'Ask about coaching + DISC')
+                )
+              )
+            ),
+            e('div', { className: 'footer-meta' },
+              '© 2026 Joe Markland Career Coaching. GAP Profile™ is a trademark. Based in Chorley, Lancashire. Sessions on Zoom and face-to-face locally.'
+            )
+          )
+        );
+      }
+
+      function App() {
+        const pageState = useState(function () {
+          const hash = window.location.hash.slice(1);
+          if (hash === '/about') return 'about';
+          if (hash === '/parents') return 'parents';
+          return 'home';
+        });
+
+        const page = pageState[0];
+        const setPage = pageState[1];
+
+        useEffect(function () {
+          function handler() {
+            const hash = window.location.hash.slice(1);
+            if (hash === '/about') setPage('about');
+            else if (hash === '/parents') setPage('parents');
+            else setPage('home');
+          }
+          window.addEventListener('hashchange', handler);
+          return function () { window.removeEventListener('hashchange', handler); };
+        }, []);
+
+        useEffect(function () {
+          const nextHash = page === 'about' ? '#/about' : page === 'parents' ? '#/parents' : '#/';
+          if (window.location.hash !== nextHash) {
+            window.location.hash = nextHash;
+          }
+        }, [page]);
+
+        return e(React.Fragment, null,
+          e(Header, { page, setPage }),
+          page === 'about'
+            ? e(AboutPage)
+            : page === 'parents'
+              ? e(ParentsPage)
+              : e(HomePage, { setPage }),
+          e(Footer, { setPage })
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(e(App));
+    })();
+  </script>
+</body>
+</html>
