@@ -1013,6 +1013,7 @@
             e('a', {
               href: '#/',
               className: 'brand',
+              style: { color: props.page === 'home' ? 'rgba(245,240,232,0.9)' : 'rgba(245,240,232,0.5)' },
               onClick: function (ev) { navClick(ev, 'home'); }
             }, 'Joe Markland', e('span', { className: 'dot' }, '.')),
             e('nav', { className: 'nav-links', 'aria-label': 'Main navigation' },
@@ -1248,6 +1249,18 @@
                       )
                     )
                   ),
+                  e('img', {
+                    src: PHOTO,
+                    alt: 'Joe Markland, career coach',
+                    style: {
+                      width: '100%',
+                      borderRadius: '10px',
+                      aspectRatio: '4 / 5',
+                      objectFit: 'cover',
+                      maxHeight: '420px',
+                      margin: '28px 0'
+                    }
+                  }),
                   e('div', { className: 'quote-stack' },
                     e('div', { className: 'quote-card' },
                       e('blockquote', null,
@@ -1429,9 +1442,42 @@
         );
       }
 
+      function HowItWorksInline() {
+        return e(React.Fragment, null,
+          e('section', { style: { paddingTop: '48px', paddingBottom: '48px' } },
+            e('div', { className: 'container narrow' },
+              e(FadeIn, { delay: 0 },
+                e('h2', { className: 'section-title' }, 'How it works')
+              ),
+              e(FadeIn, { delay: 0.05 },
+                e('p', { style: { color: 'var(--mid)', fontSize: '1rem', lineHeight: '1.78', marginTop: '20px' } },
+                  e('span', { style: { fontWeight: 600, color: 'var(--ink)' } }, 'Take the GAP Profile. '),
+                  'Free, no sign-up, about four minutes. You\u2019ll see which of four patterns is most likely getting in the way.'
+                )
+              ),
+              e(FadeIn, { delay: 0.05 },
+                e('p', { style: { color: 'var(--mid)', fontSize: '1rem', lineHeight: '1.78', marginTop: '16px' } },
+                  e('span', { style: { fontWeight: 600, color: 'var(--ink)' } }, 'See what\u2019s blocking action. '),
+                  'Not generic advice. A specific read on why the same move keeps stalling.'
+                )
+              ),
+              e(FadeIn, { delay: 0.05 },
+                e('p', { style: { color: 'var(--mid)', fontSize: '1rem', lineHeight: '1.78', marginTop: '16px' } },
+                  e('span', { style: { fontWeight: 600, color: 'var(--ink)' } }, 'Do something useful with it. '),
+                  'Use the result yourself, work through the matched workbook, or bring it into a focused session with me.'
+                )
+              )
+            )
+          ),
+          e('hr', { className: 'divider' })
+        );
+      }
+
       function HomePage(props) {
         return e('main', { id: 'main' },
           e(HeroHome),
+          e('hr', { className: 'divider' }),
+          e(HowItWorksInline),
           e(HowItWorks),
           e('hr', { className: 'divider' }),
           e(WhyThisHelps),
@@ -1462,7 +1508,19 @@
                     ),
                     e('p', null,
                       'That is what led me to build the GAP Profile: a short first step designed to help people work out what may actually be getting in the way.'
-                    )
+                    ),
+                    e('img', {
+                      src: PHOTO,
+                      alt: 'Joe Markland, career coach',
+                      style: {
+                        width: '100%',
+                        borderRadius: '10px',
+                        aspectRatio: '4 / 5',
+                        objectFit: 'cover',
+                        maxHeight: '420px',
+                        margin: '28px 0'
+                      }
+                    })
                   )
                 )
               ),
